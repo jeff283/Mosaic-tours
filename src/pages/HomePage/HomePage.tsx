@@ -9,11 +9,11 @@ const HomePage = () => {
         <div className=" bg-darkGreen h-[95vh] py-16 md:py-36">
           <div className="flex flex-col-reverse justify-between items-center  text-white px-5  md:px-20 md:flex-row">
             {/* Left Container */}
-            <div className="space-y-10 md:space-y-16">
-              <h1 className="font-bold text-4xl w-3/4 md:text-6xl">
+            <div className="space-y-8 md:space-y-16">
+              <h1 className="font-bold text-4xl w-3/4 md:text-6xl smMax:pt-6">
                 Discover a World Within Kenya
               </h1>
-              <p className="text-xl font-light md:text-2xl md:w-1/2">
+              <p className="text-xl font-light md:text-2xl md:w-1/2 ">
                 Join us on an unforgettable journey through Kenya's mosaic of
                 experiences.
               </p>
@@ -32,19 +32,20 @@ const HomePage = () => {
               <img src={heroImg} alt="Tours in Kenya" />
             </div>
           </div>
+          {/* Locations */}
           <div className="bg-darkGreen text-eggshell flex justify-between md:px-20 text-lg pt-16">
-            <span className="opacity-50 hidden md:block">Mount Kenya </span>
-            <span className="opacity-50">Nairobi National Park </span>
-            <span className="opacity-50 hidden md:block">
+            <span className="opacity-20 hidden md:block opa">Mount Kenya </span>
+            <span className="opacity-20">Nairobi National Park </span>
+            <span className="opacity-20 hidden md:block">
               Mount Longonot National Park
             </span>
-            <span className="opacity-50 hidden md:block">
+            <span className="opacity-20 hidden md:block">
               Aberdare National Park{" "}
             </span>
-            <span className="opacity-50 hidden md:block">
+            <span className="opacity-20 hidden md:block">
               Lewa Wildlife Conservancy{" "}
             </span>
-            <span className="opacity-50">Masai Mara National Reserve</span>
+            <span className="opacity-20">Masai Mara National Reserve</span>
           </div>
         </div>
       </section>
