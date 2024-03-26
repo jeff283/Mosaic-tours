@@ -25,3 +25,7 @@
 .navbar-links a:hover::after {
     width: 100%;
 }
+
+.about-shadow {
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+}

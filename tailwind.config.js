@@ -20,6 +20,7 @@ export default {
         plantinum: "#E2E7E5",
         black: "#1B1C1B",
         white: "#FFFFFF",
+        lightGray: "#5C5C5C",
       },
     },
   },
