@@ -13,27 +13,27 @@ const TourCarousel = () => {
       opts={{
         align: "center",
       }}
-      className="w-full max-w-[1600px] mdMax:pl-6 py-5 "
+      className="w-full max-w-[1600px] mdMax:pl-6  px-0 mdMax:max-w-[450px] "
     >
       <CarouselContent className="-ml-2 md:-ml-4">
-        <CarouselItem className="pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
+        <CarouselItem className="py-6  pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
           <TourCard />
         </CarouselItem>
-        <CarouselItem className="pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
+        <CarouselItem className="py-6  pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
           <TourCard />
         </CarouselItem>
-        <CarouselItem className="pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
+        <CarouselItem className="py-6  pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
           <TourCard />
         </CarouselItem>
-        <CarouselItem className="pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
+        <CarouselItem className="py-6  pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
           <TourCard />
         </CarouselItem>
-        <CarouselItem className="pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
+        <CarouselItem className="py-6  pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
           <TourCard />
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="mdMax:hidden" />
+      <CarouselNext className="mdMax:hidden" />
     </Carousel>
   );
 };
