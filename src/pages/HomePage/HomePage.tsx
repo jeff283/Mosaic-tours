@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import ContactUs from "../../components/ContactUs";
 import Footer from "../../components/Footer";
 import TourCard from "../../components/TourCard";
+import TourCarousel from "@/components/TourCarousel";
 
 // Assets
 import fiveStars from "../../assets/SVGs/5-stars.svg";
@@ -67,12 +68,9 @@ const HomePage = () => {
             <div className="text-2xl md:text-3xl underline ">See all</div>
           </div>
           {/* Card Container */}
-          <div className="flex justify-between">
+          <div className="flex justify-center">
             {/* Cards */}
-            <TourCard />
-            <TourCard />
-            <TourCard />
-            <TourCard />
+            <TourCarousel />
           </div>
         </div>
       </section>
