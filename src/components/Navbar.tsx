@@ -6,6 +6,13 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [openHamMenu, setOpenHamMenu] = useState(false);
+  const switchPages = (id: string) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({
+      behavior: "smooth",
+    });
+    console.log(id);
+  };
   return (
     <>
       <nav className="bg-darkGreen w-full px-4  md:px-16 relative text-white">
@@ -21,16 +28,44 @@ const Navbar = () => {
           </div>
           {/* Menu Items */}
           <div className=" hidden navbar-links  space-x-12 text-2xl md:flex lgMax:text-lg lg:space-x-24">
-            <NavLink to="#home" className="font-bold ">
+            <NavLink
+              to="#home"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("home");
+              }}
+            >
               Home
             </NavLink>
-            <NavLink to="#tours" className="font-bold">
+            <NavLink
+              to="#tours"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("tours");
+              }}
+            >
               Tours
             </NavLink>
-            <NavLink to="#about" className="font-bold">
+            <NavLink
+              to="#about"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("about");
+              }}
+            >
               About Us
             </NavLink>
-            <NavLink to="#contact" className="font-bold">
+            <NavLink
+              to="#contact"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("contact");
+              }}
+            >
               Contact
             </NavLink>
           </div>

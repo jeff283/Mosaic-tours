@@ -1,6 +1,7 @@
 // Components
 import Navbar from "../../components/Navbar";
 import ContactUs from "../../components/ContactUs";
+import Footer from "../../components/Footer";
 
 // Assets
 import fiveStars from "../../assets/SVGs/5-stars.svg";
@@ -236,7 +237,9 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <section id="footer">Footer</section>
+      <section id="footer">
+        <Footer />
+      </section>
     </div>
   );
 };
