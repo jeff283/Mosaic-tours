@@ -1,6 +1,10 @@
 import Navbar from "../../components/Navbar/Navbar";
 import heroImg from "../../assets/imgs/HeroImg.png";
 import cheifGuide from "../../assets/imgs/chiefGuide.png";
+import SandraGwen from "../../assets/imgs/SandraGwen.png";
+import DavidLaner from "../../assets/imgs/DavidLaner.png";
+import SarahHomer from "../../assets/imgs/SarahHomer.png";
+import fiveStars from "../../assets/SVGs/5-stars.svg";
 
 const HomePage = () => {
   return (
@@ -68,7 +72,7 @@ const HomePage = () => {
         {/* Container */}
         <div className="px-5 py-6  md:px-20 md:py-12">
           {/* Title */}
-          <h2 className="font-bold pb-3 text-darkGreen text-4xl md:text-5xl">
+          <h2 className="font-bold pb-5 md:pb-10 text-darkGreen text-4xl md:text-5xl">
             About Us
           </h2>
           {/* Flex Container */}
@@ -97,14 +101,14 @@ const HomePage = () => {
               {/* <div className="flex flex-col items-center space-y-8 md:flex-row md:justify-between md:space-x-4 md:px-4 "> */}
               <div className=" flex gap-5 items-center justify-between ">
                 {/* Award 1 */}
-                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center about-shadow">
+                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center custom-shadow">
                   <div className="text-3xl md:text-5xl">20+</div>
                   <div className="text-xl md:text-2xl text-lightGray">
                     Awards Won
                   </div>
                 </div>
                 {/* Award 2 */}
-                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center about-shadow">
+                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center custom-shadow">
                   <div className="text-3xl md:text-5xl">12K+</div>
                   <div className="text-xl md:text-2xl text-lightGray">
                     Success Tours
@@ -112,13 +116,82 @@ const HomePage = () => {
                 </div>
 
                 {/* Award 3 */}
-                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center about-shadow">
+                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center custom-shadow">
                   <div className="text-3xl md:text-5xl">16+</div>
                   <div className="text-xl md:text-2xl text-lightGray">
                     Years of Experience
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Reviews */}
+
+      <section id="reviews">
+        {/* Container */}
+        <div className="px-5 py-6  md:px-20 md:py-12">
+          {/* Title */}
+          <h2 className="font-bold pb-5 md:pb-10 text-darkGreen text-4xl md:text-5xl">
+            Customer Reviews
+          </h2>
+          {/* Review Container */}
+          <div className="flex justify-between">
+            {/* Review 1 */}
+            <div className=" flex flex-col justify-center items-center custom-shadow space-y-2 p-5  text-center  rounded-3xl md:w-1/4">
+              {/* Img */}
+              <div className=" py-2">
+                <img src={SarahHomer} alt="Sarah Homer" />
+              </div>
+              {/* Name */}
+              <h3 className="font-bold text-3xl">Sarah Homer</h3>
+              {/* Rating */}
+              <div className="">
+                <img src={fiveStars} alt="5 Stars" />
+              </div>
+              {/* Content */}
+              <p className="text-xl pb-4">
+                Mosaic Tours unveiled a hidden Kenya - stunning hikes, vibrant
+                cultures, and unforgettable memories!
+              </p>
+            </div>
+            {/* Review 2 */}
+            <div className=" hidden flex-col justify-center items-center custom-shadow space-y-2 p-5  text-center  rounded-3xl md:w-1/4 md:flex">
+              {/* Img */}
+              <div className=" py-2">
+                <img src={DavidLaner} alt="David Laner" />
+              </div>
+              {/* Name */}
+              <h3 className="font-bold text-3xl">David Laner</h3>
+              {/* Rating */}
+              <div className="">
+                <img src={fiveStars} alt="5 Stars" />
+              </div>
+              {/* Content */}
+              <p className="text-xl pb-4">
+                Personalized Kenyan adventure with Mosaic Tours: from Masai Mara
+                safaris to Mombasa's history.
+              </p>
+            </div>
+            {/* Review 3 */}
+            <div className=" hidden flex-col justify-center items-center custom-shadow space-y-2 p-5  text-center  rounded-3xl md:w-1/4 md:flex">
+              {/* Img */}
+              <div className=" py-2">
+                <img src={SandraGwen} alt="Sandra Gwen" />
+              </div>
+              {/* Name */}
+              <h3 className="font-bold text-3xl">Sandra Gwen</h3>
+              {/* Rating */}
+              <div className="">
+                <img src={fiveStars} alt="5 Stars" />
+              </div>
+              {/* Content */}
+              <p className="text-xl pb-4">
+                Mosaic Tours exceeded expectations the landscapes, wildlife, and
+                authentic cultural experiences.
+              </p>
             </div>
           </div>
         </div>
