@@ -1,16 +1,16 @@
 import { PiCalendarFill } from "react-icons/pi";
 
-import mountainTourSM from "../assets/imgs/TourImgs/mountainTourSM.jpg";
+// import mountainTourSM from "../assets/imgs/TourImgs/mountainTourSM.jpg";
 import mountainTour from "../assets/imgs/TourImgs/mountainTour.jpg";
 
-interface Props {
-  Img: string;
-  tourName: string;
-  tourLocation: string;
-  price: number;
-  days: number;
-  nights: number;
-}
+// interface Props {
+//   Img: string;
+//   tourName: string;
+//   tourLocation: string;
+//   price: number;
+//   days: number;
+//   nights: number;
+// }
 
 const TourCard = () => {
   return (
