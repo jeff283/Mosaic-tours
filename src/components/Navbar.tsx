@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 import { GiHamburgerMenu } from "react-icons/gi";
-import MosaicDarkLogo from "../../assets/SVGs/Mosaic Logo Dark.svg";
+import MosaicDarkLogo from "../assets/SVGs/Mosaic Logo Dark.svg";
 import { useState } from "react";
 
 const Navbar = () => {

@@ -1,10 +1,15 @@
-import Navbar from "../../components/Navbar/Navbar";
+// Components
+import Navbar from "../../components/Navbar";
+import ContactUs from "../../components/ContactUs";
+
+// Assets
+import fiveStars from "../../assets/SVGs/5-stars.svg";
 import heroImg from "../../assets/imgs/HeroImg.png";
 import cheifGuide from "../../assets/imgs/chiefGuide.png";
 import SandraGwen from "../../assets/imgs/SandraGwen.png";
 import DavidLaner from "../../assets/imgs/DavidLaner.png";
 import SarahHomer from "../../assets/imgs/SarahHomer.png";
-import fiveStars from "../../assets/SVGs/5-stars.svg";
+import ContactUsImg from "../../assets/imgs/ContactUs.png";
 
 const HomePage = () => {
   return (
@@ -34,8 +39,8 @@ const HomePage = () => {
               </div>
             </div>
             {/* Right Container */}
-            <div className="">
-              <img className="" src={heroImg} alt="Tours in Kenya" />
+            <div>
+              <img src={heroImg} alt="Tours in Kenya" />
             </div>
           </div>
           {/* Locations */}
@@ -60,9 +65,9 @@ const HomePage = () => {
             <div className="text-2xl md:text-3xl underline ">See all</div>
           </div>
           {/* Card Container */}
-          <div className="">
+          <div>
             {/* Card */}
-            <div className="">Card</div>
+            <div>Card</div>
           </div>
         </div>
       </section>
@@ -76,10 +81,10 @@ const HomePage = () => {
             About Us
           </h2>
           {/* Flex Container */}
-          <div className="space-y-8 md:flex md:justify-between mx-auto">
+          <div className="space-y-8 md:flex md:justify-between mx-auto md:space-x-6">
             {/* Left Img */}
-            <div className="">
-              <img src={cheifGuide} alt="Chief Tour Guide" className="" />
+            <div>
+              <img src={cheifGuide} alt="Chief Tour Guide" />
             </div>
             {/* Right Content Flex */}
             <div className=" md:w-3/5  space-y-8 md:space-y-16">
@@ -132,13 +137,13 @@ const HomePage = () => {
 
       <section id="reviews">
         {/* Container */}
-        <div className="px-5 py-6  md:px-20 md:py-12">
+        <div className="px-5 py-6   md:px-20 md:py-12 ">
           {/* Title */}
           <h2 className="font-bold pb-5 md:pb-10 text-darkGreen text-4xl md:text-5xl">
             Customer Reviews
           </h2>
           {/* Review Container */}
-          <div className="flex justify-between">
+          <div className="flex justify-between ">
             {/* Review 1 */}
             <div className=" flex flex-col justify-center items-center custom-shadow space-y-2 p-5  text-center  rounded-3xl md:w-1/4">
               {/* Img */}
@@ -148,7 +153,7 @@ const HomePage = () => {
               {/* Name */}
               <h3 className="font-bold text-3xl">Sarah Homer</h3>
               {/* Rating */}
-              <div className="">
+              <div>
                 <img src={fiveStars} alt="5 Stars" />
               </div>
               {/* Content */}
@@ -166,7 +171,7 @@ const HomePage = () => {
               {/* Name */}
               <h3 className="font-bold text-3xl">David Laner</h3>
               {/* Rating */}
-              <div className="">
+              <div>
                 <img src={fiveStars} alt="5 Stars" />
               </div>
               {/* Content */}
@@ -184,7 +189,7 @@ const HomePage = () => {
               {/* Name */}
               <h3 className="font-bold text-3xl">Sandra Gwen</h3>
               {/* Rating */}
-              <div className="">
+              <div>
                 <img src={fiveStars} alt="5 Stars" />
               </div>
               {/* Content */}
@@ -196,6 +201,42 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact us */}
+
+      <section id="contact">
+        {/* Container */}
+        <div className="px-5 py-6  md:px-20 md:py-12">
+          {/* Title */}
+          <h2 className="font-bold pb-5 md:pb-10 text-darkGreen text-4xl md:text-5xl">
+            Talk To Us
+          </h2>
+          {/* Talk to Us */}
+          <div className="flex flex-col justify-between md:flex-row ">
+            {/* Left Container */}
+
+            <div className="custom-shadow rounded-[30px] text-center  space-y-8 max-w-[438px]">
+              {/* Image */}
+              <img src={ContactUsImg} alt="Masaai Couple" />
+
+              {/* Content Container*/}
+              <div className=" text-2xl space-y-8 py-10 ">
+                <div>Yala Towers, 4th Floor, Junction of Biashara street</div>
+                <div>Tel: +254 110467983</div>
+                <div>info@mosaic.com</div>
+              </div>
+            </div>
+
+            {/* Right Container */}
+            <div className=" max-w-[400px] md:max-w-[1000px] lg:w-[900px] mt-12 md:mt-0">
+              <ContactUs />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <section id="footer">Footer</section>
     </div>
   );
 };
