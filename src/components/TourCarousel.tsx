@@ -32,8 +32,8 @@ const TourCarousel = () => {
           <TourCard />
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious className="mdMax:hidden" />
-      <CarouselNext className="mdMax:hidden" />
+      <CarouselPrevious className="bg-eggshell ring-1 ring-lightGreen mdMax:hidden  " />
+      <CarouselNext className="bg-eggshell ring-1 ring-lightGreen mdMax:hidden" />
     </Carousel>
   );
 };

@@ -2,7 +2,6 @@
 import Navbar from "../../components/Navbar";
 import ContactUs from "../../components/ContactUs";
 import Footer from "../../components/Footer";
-import TourCard from "../../components/TourCard";
 import TourCarousel from "@/components/TourCarousel";
 
 // Assets
@@ -13,6 +12,7 @@ import SandraGwen from "../../assets/imgs/SandraGwen.png";
 import DavidLaner from "../../assets/imgs/DavidLaner.png";
 import SarahHomer from "../../assets/imgs/SarahHomer.png";
 import ContactUsImg from "../../assets/imgs/ContactUs.png";
+import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -65,7 +65,9 @@ const HomePage = () => {
           {/* Top Bar */}
           <div className="flex justify-between items-center font-bold text-darkGreen pb-16">
             <h2 className="text-4xl md:text-5xl ">Tours</h2>
-            <div className="text-2xl md:text-3xl underline ">See all</div>
+            <div className="text-2xl md:text-3xl  cursor-pointer navbar-links navbar-links-darkGreen ">
+              <NavLink to="/tours">See all</NavLink>
+            </div>
           </div>
           {/* Card Container */}
           <div className="flex justify-center">
