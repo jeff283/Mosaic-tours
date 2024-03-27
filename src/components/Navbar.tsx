@@ -92,16 +92,44 @@ const Navbar = () => {
               openHamMenu ? "flex" : "hidden"
             } flex-col items-center py-8 mt-2 space-y-6 text-2xl sm:w-auto sm:self-center left-6 right-6 drop-shadow-md `}
           >
-            <NavLink to="#home" className="font-bold ">
+            <NavLink
+              to="#home"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("home");
+              }}
+            >
               Home
             </NavLink>
-            <NavLink to="#tours" className="font-bold">
+            <NavLink
+              to="#tours"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("tours");
+              }}
+            >
               Tours
             </NavLink>
-            <NavLink to="#about" className="font-bold">
+            <NavLink
+              to="#about"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("about");
+              }}
+            >
               About Us
             </NavLink>
-            <NavLink to="#contact" className="font-bold">
+            <NavLink
+              to="#contact"
+              className="font-bold"
+              onClick={(event) => {
+                event.preventDefault();
+                switchPages("contact");
+              }}
+            >
               Contact
             </NavLink>
           </div>
