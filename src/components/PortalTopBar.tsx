@@ -47,15 +47,18 @@ const PortalTopBar = ({ pageTitle }: Props) => {
   }, []);
 
   return (
-    <div className="portal-top-container ">
-      <div className="fz32 poppins-medium">{pageTitle}</div>
-      <div onClick={handleLogout} className="portal-top-profile ">
-        <div className="profile ">
-          <GoPersonFill size="34" />
+    <div className=" flex justify-between items-center w-full px-4 py-1  custom-shadow rounded-3xl mt-4 bg-eggshell ">
+      <div className="font-medium text-2xl md:text-3xl">{pageTitle}</div>
+      <div
+        onClick={handleLogout}
+        className="flex items-center space-x-2  py-0.5"
+      >
+        <div className="rounded-full border border-darkGreen bg-darkGreen p-1 text-eggshell hover:bg-eggshell hover:text-darkGreen">
+          <GoPersonFill className="w-7 h-7 md:w-8 md:h-8" />
         </div>
         {/* <div className="profile-name fz24 poppins-light">{pageUser || ""}</div> */}
-        <div className="profile-name fz24 poppins-light">
-          {fetchedUser.name}
+        <div className=" font-light text-2xl hidden md:block">
+          {fetchedUser.name || "No Name"}
         </div>
       </div>
     </div>

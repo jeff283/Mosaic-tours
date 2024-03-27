@@ -3,10 +3,12 @@ import PortalTopBar from "@/components/PortalTopBar";
 
 const AdminPortalDashboard = () => {
   return (
-    <div>
+    <div className="flex bg-eggshell">
       <AdminPortalSidebar />
 
-      <PortalTopBar pageTitle="Dashboard" />
+      <div className="px-2 md:pr-20 md:pl-4 w-full">
+        <PortalTopBar pageTitle="Dashboard" />
+      </div>
     </div>
   );
 };
