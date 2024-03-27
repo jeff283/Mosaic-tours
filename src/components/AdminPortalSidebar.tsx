@@ -1,8 +1,7 @@
 import PortalSidebar from "./PortalSidebar";
 import PortalSidebarItem from "./PortalSidebarItem";
 import { MdDashboard } from "react-icons/md";
-import { FaDoorOpen } from "react-icons/fa";
-import { PiStudentFill } from "react-icons/pi";
+import { FaMap, FaBook } from "react-icons/fa";
 
 const AdminPortalSidebar = () => {
   return (
@@ -14,14 +13,14 @@ const AdminPortalSidebar = () => {
           Icon=<MdDashboard size="48" />
         />
         <PortalSidebarItem
-          itemName="Rooms"
+          itemName="Tours"
           itemLink="/admin-portal/tours"
-          Icon=<FaDoorOpen size="48" />
+          Icon=<FaMap size="48" />
         />
         <PortalSidebarItem
-          itemName="Students"
+          itemName="Bookings"
           itemLink="/admin-portal/bookings"
-          Icon=<PiStudentFill size="48" />
+          Icon=<FaBook size="48" />
         />
       </PortalSidebar>
     </>

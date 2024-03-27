@@ -12,7 +12,7 @@ interface Props {
 const PortalSidebar = ({ children }: Props) => {
   return (
     <>
-      <div className="h-screen  bg-darkGreen px-2 space-y-16  pt-3 md:px-4 lg:px-8 xl:px-16">
+      <div className="h-dvh min-h-screen  bg-darkGreen px-2 space-y-16  pt-3 md:px-4 lg:px-8 xl:px-16">
         <div className="">
           <NavLink to="/admin-portal/dashboard">
             <img src={RoomioDarkLogo} alt="Logo" className="hidden md:block" />
