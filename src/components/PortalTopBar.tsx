@@ -33,10 +33,10 @@ const PortalTopBar = ({ pageTitle }: Props) => {
             name: userData.name,
             phone: userData.phone,
             email: userData.email,
-            gender: userData.gender,
+            // gender: userData.gender,
             isAdmin: userData.isAdmin,
-            admNo: userData.admNo,
-            roomId: userData.roomId,
+            // admNo: userData.admNo,
+            // roomId: userData.roomId,
           };
           setfetchedUser(allUserData);
         }
