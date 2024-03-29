@@ -55,6 +55,9 @@ module.exports = {
       xlMax: { max: "1440px" },
     },
     extend: {
+      boxShadow: {
+        custom: "0px 0px 8px 2px rgba(0, 0, 0, 0.1)",
+      },
       colors: {
         darkGreen: "#0B3727",
         lightGreen: "#718981",

@@ -99,7 +99,7 @@
   }
   /* [type="checkbox"],
   [type="radio"] {
-    @apply border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
+    @apply text-indigo-600 border-gray-300 rounded focus:ring-indigo-500;
   } */
 }
 
@@ -141,4 +141,25 @@
 
 .custom-shadow {
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+/* .custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+} */
+
+/* Handle */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #718981;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0B3727;
 }

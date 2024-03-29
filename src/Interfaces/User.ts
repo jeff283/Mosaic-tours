@@ -4,7 +4,7 @@ interface User {
   phone: string;
   email: string;
   isAdmin: boolean;
-  tour?: string;
+  // tour?: string;
 }
 
 export default User;
