@@ -76,33 +76,6 @@
 } 
 
 
-@layer base {
-  [type="text"],
-  [type="email"],
-  [type="url"],
-  [type="password"],
-  [type="number"],
-  [type="date"],
-  [type="datetime-local"],
-  [type="month"],
-  [type="search"],
-  [type="tel"],
-  [type="time"],
-  [type="week"],
-  [multiple],
-  textarea,
-  select {
-    @apply mt-0 block w-full px-0.5 border-0 border-b-2 border-lightGreen bg-eggshell text-xl md:text-2xl font-light  focus:ring-0 focus:border-darkGreen;
-  }
-  label {
-      @apply text-2xl md:text-3xl font-medium
-  }
-  /* [type="checkbox"],
-  [type="radio"] {
-    @apply text-indigo-600 border-gray-300 rounded focus:ring-indigo-500;
-  } */
-}
-
 
 .navbar-links a {
   text-decoration: none;

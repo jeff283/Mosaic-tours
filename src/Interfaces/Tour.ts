@@ -3,12 +3,12 @@ export default interface Tour {
   tourName: string;
   location: string;
   tourImg: string;
-  // tourDate: Date;
-  tourDate: string;
+  tourDate: Date;
   days: number;
   nights: number;
   price: number;
   participants: string[];
 }
+// tourDate: Date;
 // featured: boolean;
 // tourType: string;

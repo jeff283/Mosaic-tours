@@ -28,8 +28,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    // tourDate: new Date("25/04/2024").getDate(),
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -40,7 +40,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -51,7 +52,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -62,7 +64,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -73,7 +76,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -84,7 +88,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -95,7 +100,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -106,7 +112,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -117,7 +124,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -128,7 +136,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -139,106 +148,8 @@ const toursData: Tour[] = [
     tourName: "Mount Kenya",
     location: "Meru, Kenya",
     tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "12",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "13",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "14",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "15",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "16",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "17",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "18",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "19",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "20",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "25/04/2024",
+    tourDate: new Date("2024-04-25"),
+    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,
@@ -271,33 +182,42 @@ export function TableDisplay() {
     <div className="w-full max-h-[80vh] overflow-y-auto custom-scrollbar  relative">
       <div className="sticky top-0 z-10 bg-eggshell custom-shadow">
         <Table className="w-full">
-          <TableHeader>
+          <TableHeader className="bg-eggshell shadow-custom">
             <TableRow>
-              <TableHead className="hidden lg:table-cell">Tour ID</TableHead>
               <TableHead>Tour Name</TableHead>
               <TableHead className="hidden md:table-cell">Location</TableHead>
               <TableHead>Date</TableHead>
               <TableHead className="hidden md:table-cell">Days</TableHead>
               <TableHead className="hidden md:table-cell">Nights</TableHead>
               <TableHead>Price</TableHead>
+              <TableHead className="hidden lg:table-cell">
+                Participants
+              </TableHead>
+
               <TableHead className="hidden md:table-cell">Action</TableHead>
             </TableRow>
           </TableHeader>
-        </Table>
+          {/* </Table>
       </div>
       <div className="w-full">
-        <Table className="w-full">
+        <Table className="w-full"> */}
           <TableBody>
             {toursData.map((tour: Tour) => (
               <TableRow key={tour.id}>
-                <TableCell className="hidden font-medium lg:table-cell">
-                  {tour.id}
-                </TableCell>
                 <TableCell>{tour.tourName}</TableCell>
                 <TableCell className="hidden md:table-cell">
                   {tour.location}
                 </TableCell>
-                <TableCell>{tour.tourDate}</TableCell>
+                <TableCell className="table-cell md:hidden">
+                  {tour.tourDate.toLocaleDateString("en-GB")}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {tour.tourDate.getDate().toString().padStart(2, "0")}
+                  {"-"}
+                  {tour.tourDate.toLocaleString("default", { month: "short" })}
+                  {"-"}
+                  {tour.tourDate.getFullYear()}
+                </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {tour.days}
                 </TableCell>
@@ -305,6 +225,9 @@ export function TableDisplay() {
                   {tour.nights}
                 </TableCell>
                 <TableCell>{tour.price}</TableCell>
+                <TableCell className="hidden font-medium lg:table-cell">
+                  {tour.participants.length}
+                </TableCell>
                 <TableCell className="">
                   {/* <FaEllipsisV size={16} /> */}
                   <div>
@@ -343,9 +266,6 @@ export function TableDisplay() {
                     </DropdownMenu>
                   </div>
                 </TableCell>
-                {/* <TableCell className="hidden md:table-cell">
-                  <FaEllipsisV size={20} />
-                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>
