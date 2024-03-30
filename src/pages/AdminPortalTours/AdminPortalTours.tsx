@@ -145,7 +145,6 @@ const AdminPortalTours = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isUpdatingTour, setIsUpdatingTour] = useState(false);
   const [updateTour, setUpdateTour] = useState<Tour>({} as Tour);
-  // console.log(updateTour);
 
   // Update
   const handleUpdateTour = (tour: Tour) => {

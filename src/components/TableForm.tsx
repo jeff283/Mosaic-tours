@@ -1,20 +1,14 @@
-// import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
-  //   SheetClose,
   SheetContent,
   SheetDescription,
-  //   SheetFooter,
   SheetHeader,
   SheetTitle,
-  //   SheetTrigger,
 } from "@/components/ui/sheet";
-// import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
 import { FieldValues, useForm } from "react-hook-form";
-// import { DevTool } from "@hookform/devtools";
-// import { useEffect, useState } from "react";
+
 import Tour from "@/Interfaces/Tour";
 import { useEffect } from "react";
 
@@ -45,30 +39,7 @@ const TableForm = ({
   onFormSubmit,
   clearUpdateTour,
 }: Props) => {
-  const isUpdateTour =
-    updateTour && Object.keys(updateTour).length > 0 ? true : false;
-  console.log("isUpdateTour", isUpdateTour);
-  console.log("updateTour", updateTour);
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    //  control,
-    setValue,
-  } = useForm();
-  //     {
-  //     defaultValues: {
-  //       //   tourName: updateTour.tourName,
-  //       tourName: isUpdateTour ? updateTour.tourName : "No Tour Name",
-  //       location: updateTour.location,
-  //       tourImg: updateTour.tourImg,
-  //       tourDate: updateTour.tourDate,
-  //       days: updateTour.days,
-  //       nights: updateTour.nights,
-  //       price: updateTour.price,
-  //     },
-  //   }
+  const { register, handleSubmit, reset, setValue } = useForm();
 
   useEffect(() => {
     setValue("tourName", updateTour.tourName || "");
@@ -84,32 +55,18 @@ const TableForm = ({
       id: "",
       tourName: data.tourName,
       location: data.location,
-      //   tourImg: data.tourImg,
       tourImg: "tourImg.png",
       tourDate: data.tourDate,
-      days: parseInt(data.days),
-      nights: parseInt(data.nights),
-      price: parseInt(data.price),
+      days: data.days,
+      nights: data.nights,
+      price: data.price,
       participants: [],
     };
     onFormSubmit(tourTemplateData);
-    // setIsSubmitted(true);
     reset();
-    console.log("updateTour on Submit State: \n", updateTour);
 
     clearUpdateTour();
-    console.log("updateTour on Emptying State: \n", updateTour);
   };
-
-  //   console.log({ ...(isUpdateTour && { defaultValue: updateTour.tourName }) });
-
-  //   useEffect(() => {
-  //     if (isSubmitted) {
-  //       reset();
-
-  //       setIsSubmitted(false); // Reset submission state after form reset
-  //     }
-  //   }, [isSubmitted, reset]);
 
   return (
     <div className="">
@@ -118,10 +75,8 @@ const TableForm = ({
         open={openSheet}
         onOpenChange={() => {
           onOpenSheetChange(!openSheet);
-          //   setIsSubmitted(true);
           clearUpdateTour();
           reset();
-          console.log("Sheet Focus Changed");
         }}
       >
         <SheetContent className=" mr-7 md:mr-0 bg-eggshell shadow-custom">
@@ -140,11 +95,8 @@ const TableForm = ({
                 >
                   Tour Name
                 </label>
-                {/* <p>{updateTour.tourName}</p> */}
                 <input
                   {...register("tourName")}
-                  //   defaultValue={isUpdateTour ? updateTour.tourName : ""}
-                  //   {...(isUpdateTour && { defaultValue: updateTour.tourName })}
                   id="tourName"
                   type="text"
                   placeholder="Enter Tour Name"
@@ -160,10 +112,8 @@ const TableForm = ({
                 >
                   Location
                 </label>
-                {/* <p>{updateTour.location}</p> */}
                 <input
                   {...register("location")}
-                  //   defaultValue={isUpdateTour ? updateTour.location : ""}
                   id="location"
                   type="text"
                   placeholder="Enter Tour Location"
@@ -179,11 +129,9 @@ const TableForm = ({
                 >
                   Date
                 </label>
-                {/* <p>{updateTour.tourDate}</p> */}
 
                 <input
                   {...register("tourDate")}
-                  //   defaultValue={isUpdateTour ? updateTour.tourDate : ""}
                   id="tourDate"
                   type="text"
                   placeholder="Enter Tour date"
@@ -199,11 +147,12 @@ const TableForm = ({
                 >
                   Days
                 </label>
-                {/* <p>{updateTour.days}</p> */}
 
                 <input
-                  {...register("days")}
-                  //   defaultValue={isUpdateTour ? updateTour.days : ""}
+                  //   {...register("days")}
+                  {...register("days", {
+                    valueAsNumber: true,
+                  })}
                   id="days"
                   type="number"
                   placeholder="Enter Tour Days"
@@ -219,11 +168,12 @@ const TableForm = ({
                 >
                   Nights
                 </label>
-                {/* <p>{updateTour.nights}</p> */}
 
                 <input
-                  {...register("nights")}
-                  //   defaultValue={isUpdateTour ? updateTour.nights : ""}
+                  //   {...register("nights")}
+                  {...register("nights", {
+                    valueAsNumber: true,
+                  })}
                   id="nights"
                   type="number"
                   placeholder="Enter Tour Nights"
@@ -239,11 +189,12 @@ const TableForm = ({
                 >
                   Price
                 </label>
-                {/* <p>{updateTour.price}</p> */}
 
                 <input
-                  {...register("price")}
-                  //   defaultValue={isUpdateTour ? updateTour.price : ""}
+                  //   {...(register("price"), {})}
+                  {...register("price", {
+                    valueAsNumber: true,
+                  })}
                   id="price"
                   type="number"
                   placeholder="Enter Tour Price"

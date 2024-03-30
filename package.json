@@ -24,6 +24,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.0.0",
     "firebase": "^10.9.0",
+    "gm": "^1.25.0",
     "lucide-react": "^0.363.0",
     "react": "^18.2.0",
     "react-day-picker": "^8.10.0",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
     "@tailwindcss/forms": "^0.5.7",
+    "@types/gm": "^1.25.4",
     "@types/node": "^20.11.30",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
