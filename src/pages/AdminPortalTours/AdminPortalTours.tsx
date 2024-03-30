@@ -21,10 +21,10 @@ const toursData: Tour[] = [
   },
   {
     id: "2",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
+    tourName: "Mount Longonot",
+    location: "Mai Mahui, Kenya",
     tourImg: "png",
-    tourDate: "2024-04-25",
+    tourDate: "2024-02-05",
     // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
@@ -33,10 +33,10 @@ const toursData: Tour[] = [
   },
   {
     id: "3",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
+    tourName: "Masaai Mara",
+    location: "Narok, Kenya",
     tourImg: "png",
-    tourDate: "2024-04-25",
+    tourDate: "2024-07-15",
     // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
@@ -193,8 +193,11 @@ const AdminPortalTours = () => {
             </Button>
             <TableForm
               openSheet={isSheetOpen}
-              onOpenSheetChange={(sheetState) => setIsSheetOpen(sheetState)}
               updateTour={updateTour}
+              onOpenSheetChange={(sheetState) => setIsSheetOpen(sheetState)}
+              clearUpdateTour={() => {
+                setUpdateTour({} as Tour);
+              }}
               onFormSubmit={(tour) => {
                 // Close Form
                 setIsSheetOpen(false);

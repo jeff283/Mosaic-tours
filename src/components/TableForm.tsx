@@ -13,6 +13,7 @@ import {
 import { Button } from "./ui/button";
 
 import { FieldValues, useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
 // import { useEffect, useState } from "react";
 import Tour from "@/Interfaces/Tour";
 
@@ -33,6 +34,7 @@ interface Props {
   updateTour?: Tour;
   onOpenSheetChange: (sheetState: boolean) => void;
   onFormSubmit: (tour: Tour) => void;
+  clearUpdateTour: () => void;
 }
 
 const TableForm = ({
@@ -40,9 +42,12 @@ const TableForm = ({
   updateTour = emptyTour,
   onOpenSheetChange,
   onFormSubmit,
+  clearUpdateTour,
 }: Props) => {
-  const { register, handleSubmit, reset } = useForm();
-  //   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { register, handleSubmit, reset, control } = useForm();
+  const isUpdateTour =
+    updateTour && Object.keys(updateTour).length > 0 ? true : false;
+  console.log(isUpdateTour);
 
   const onSubmit = async (data: FieldValues) => {
     const tourTemplateData: Tour = {
@@ -61,9 +66,12 @@ const TableForm = ({
     // setIsSubmitted(true);
     reset();
     console.log("updateTour on Submit State: \n", updateTour);
-    updateTour = {} as Tour;
+
+    clearUpdateTour();
     console.log("updateTour on Emptying State: \n", updateTour);
   };
+
+  console.log({ ...(isUpdateTour && { defaultValue: updateTour.tourName }) });
 
   //   useEffect(() => {
   //     if (isSubmitted) {
@@ -81,7 +89,7 @@ const TableForm = ({
         onOpenChange={() => {
           onOpenSheetChange(!openSheet);
           //   setIsSubmitted(true);
-          updateTour = {} as Tour;
+          clearUpdateTour();
           reset();
           console.log("Sheet Focus Changed");
         }}
@@ -92,6 +100,7 @@ const TableForm = ({
             <SheetDescription>View Details on (X) tour</SheetDescription>
           </SheetHeader>
           <div className="max-h-[80vh] md:max-h-[90vh] overflow-y-auto custom-scrollbar pb-4">
+            <DevTool control={control} placement="top-left" />
             <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
               {/* TOUR NAME */}
               <div className="grid items-center gap-0 grid-row-2">
@@ -104,7 +113,8 @@ const TableForm = ({
                 <p>{updateTour.tourName}</p>
                 <input
                   {...register("tourName")}
-                  defaultValue={updateTour.tourName}
+                  defaultValue={isUpdateTour ? updateTour.tourName : ""}
+                  //   {...(isUpdateTour && { defaultValue: updateTour.tourName })}
                   id="tourName"
                   type="text"
                   placeholder="Enter Tour Name"
@@ -120,9 +130,10 @@ const TableForm = ({
                 >
                   Location
                 </label>
+                <p>{updateTour.location}</p>
                 <input
                   {...register("location")}
-                  defaultValue={updateTour.location}
+                  defaultValue={isUpdateTour ? updateTour.location : ""}
                   id="location"
                   type="text"
                   placeholder="Enter Tour Location"
@@ -138,9 +149,11 @@ const TableForm = ({
                 >
                   Date
                 </label>
+                <p>{updateTour.tourDate}</p>
+
                 <input
                   {...register("tourDate")}
-                  defaultValue={updateTour.tourDate}
+                  defaultValue={isUpdateTour ? updateTour.tourDate : ""}
                   id="tourDate"
                   type="text"
                   placeholder="Enter Tour date"
@@ -156,9 +169,11 @@ const TableForm = ({
                 >
                   Days
                 </label>
+                <p>{updateTour.days}</p>
+
                 <input
                   {...register("days")}
-                  defaultValue={updateTour.days}
+                  defaultValue={isUpdateTour ? updateTour.days : ""}
                   id="days"
                   type="number"
                   placeholder="Enter Tour Days"
@@ -174,9 +189,11 @@ const TableForm = ({
                 >
                   Nights
                 </label>
+                <p>{updateTour.nights}</p>
+
                 <input
                   {...register("nights")}
-                  defaultValue={updateTour.nights}
+                  defaultValue={isUpdateTour ? updateTour.nights : ""}
                   id="nights"
                   type="number"
                   placeholder="Enter Tour Nights"
@@ -192,9 +209,11 @@ const TableForm = ({
                 >
                   Price
                 </label>
+                <p>{updateTour.price}</p>
+
                 <input
                   {...register("price")}
-                  defaultValue={updateTour.price}
+                  defaultValue={isUpdateTour ? updateTour.price : ""}
                   id="price"
                   type="number"
                   placeholder="Enter Tour Price"
