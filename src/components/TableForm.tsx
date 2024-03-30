@@ -16,6 +16,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 // import { useEffect, useState } from "react";
 import Tour from "@/Interfaces/Tour";
+import { useEffect } from "react";
 
 const emptyTour: Tour = {
   id: "",
@@ -44,10 +45,33 @@ const TableForm = ({
   onFormSubmit,
   clearUpdateTour,
 }: Props) => {
-  const { register, handleSubmit, reset, control } = useForm();
   const isUpdateTour =
     updateTour && Object.keys(updateTour).length > 0 ? true : false;
-  console.log(isUpdateTour);
+  console.log("isUpdateTour", isUpdateTour);
+  console.log("updateTour", updateTour);
+
+  const { register, handleSubmit, reset, control, setValue } = useForm();
+  //     {
+  //     defaultValues: {
+  //       //   tourName: updateTour.tourName,
+  //       tourName: isUpdateTour ? updateTour.tourName : "No Tour Name",
+  //       location: updateTour.location,
+  //       tourImg: updateTour.tourImg,
+  //       tourDate: updateTour.tourDate,
+  //       days: updateTour.days,
+  //       nights: updateTour.nights,
+  //       price: updateTour.price,
+  //     },
+  //   }
+
+  useEffect(() => {
+    setValue("tourName", updateTour.tourName || "");
+    setValue("location", updateTour.location || "");
+    setValue("tourDate", updateTour.tourDate || "");
+    setValue("days", updateTour.days || "");
+    setValue("nights", updateTour.nights || "");
+    setValue("price", updateTour.price || "");
+  }, [updateTour, setValue]);
 
   const onSubmit = async (data: FieldValues) => {
     const tourTemplateData: Tour = {
@@ -71,7 +95,7 @@ const TableForm = ({
     console.log("updateTour on Emptying State: \n", updateTour);
   };
 
-  console.log({ ...(isUpdateTour && { defaultValue: updateTour.tourName }) });
+  //   console.log({ ...(isUpdateTour && { defaultValue: updateTour.tourName }) });
 
   //   useEffect(() => {
   //     if (isSubmitted) {
@@ -110,10 +134,10 @@ const TableForm = ({
                 >
                   Tour Name
                 </label>
-                <p>{updateTour.tourName}</p>
+                {/* <p>{updateTour.tourName}</p> */}
                 <input
                   {...register("tourName")}
-                  defaultValue={isUpdateTour ? updateTour.tourName : ""}
+                  //   defaultValue={isUpdateTour ? updateTour.tourName : ""}
                   //   {...(isUpdateTour && { defaultValue: updateTour.tourName })}
                   id="tourName"
                   type="text"
@@ -130,10 +154,10 @@ const TableForm = ({
                 >
                   Location
                 </label>
-                <p>{updateTour.location}</p>
+                {/* <p>{updateTour.location}</p> */}
                 <input
                   {...register("location")}
-                  defaultValue={isUpdateTour ? updateTour.location : ""}
+                  //   defaultValue={isUpdateTour ? updateTour.location : ""}
                   id="location"
                   type="text"
                   placeholder="Enter Tour Location"
@@ -149,11 +173,11 @@ const TableForm = ({
                 >
                   Date
                 </label>
-                <p>{updateTour.tourDate}</p>
+                {/* <p>{updateTour.tourDate}</p> */}
 
                 <input
                   {...register("tourDate")}
-                  defaultValue={isUpdateTour ? updateTour.tourDate : ""}
+                  //   defaultValue={isUpdateTour ? updateTour.tourDate : ""}
                   id="tourDate"
                   type="text"
                   placeholder="Enter Tour date"
@@ -169,11 +193,11 @@ const TableForm = ({
                 >
                   Days
                 </label>
-                <p>{updateTour.days}</p>
+                {/* <p>{updateTour.days}</p> */}
 
                 <input
                   {...register("days")}
-                  defaultValue={isUpdateTour ? updateTour.days : ""}
+                  //   defaultValue={isUpdateTour ? updateTour.days : ""}
                   id="days"
                   type="number"
                   placeholder="Enter Tour Days"
@@ -189,11 +213,11 @@ const TableForm = ({
                 >
                   Nights
                 </label>
-                <p>{updateTour.nights}</p>
+                {/* <p>{updateTour.nights}</p> */}
 
                 <input
                   {...register("nights")}
-                  defaultValue={isUpdateTour ? updateTour.nights : ""}
+                  //   defaultValue={isUpdateTour ? updateTour.nights : ""}
                   id="nights"
                   type="number"
                   placeholder="Enter Tour Nights"
@@ -209,11 +233,11 @@ const TableForm = ({
                 >
                   Price
                 </label>
-                <p>{updateTour.price}</p>
+                {/* <p>{updateTour.price}</p> */}
 
                 <input
                   {...register("price")}
-                  defaultValue={isUpdateTour ? updateTour.price : ""}
+                  //   defaultValue={isUpdateTour ? updateTour.price : ""}
                   id="price"
                   type="number"
                   placeholder="Enter Tour Price"
