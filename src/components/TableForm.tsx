@@ -13,7 +13,7 @@ import {
 import { Button } from "./ui/button";
 
 import { FieldValues, useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
+// import { DevTool } from "@hookform/devtools";
 // import { useEffect, useState } from "react";
 import Tour from "@/Interfaces/Tour";
 import { useEffect } from "react";
@@ -50,7 +50,13 @@ const TableForm = ({
   console.log("isUpdateTour", isUpdateTour);
   console.log("updateTour", updateTour);
 
-  const { register, handleSubmit, reset, control, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    //  control,
+    setValue,
+  } = useForm();
   //     {
   //     defaultValues: {
   //       //   tourName: updateTour.tourName,
@@ -124,7 +130,7 @@ const TableForm = ({
             <SheetDescription>View Details on (X) tour</SheetDescription>
           </SheetHeader>
           <div className="max-h-[80vh] md:max-h-[90vh] overflow-y-auto custom-scrollbar pb-4">
-            <DevTool control={control} placement="top-left" />
+            {/* <DevTool control={control} placement="top-left" /> */}
             <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
               {/* TOUR NAME */}
               <div className="grid items-center gap-0 grid-row-2">
