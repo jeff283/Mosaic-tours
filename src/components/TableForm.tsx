@@ -13,40 +13,78 @@ import {
 import { Button } from "./ui/button";
 
 import { FieldValues, useForm } from "react-hook-form";
-import { useState } from "react";
+// import { useEffect, useState } from "react";
+import Tour from "@/Interfaces/Tour";
+
+const emptyTour: Tour = {
+  id: "",
+  tourName: "",
+  location: "",
+  tourImg: "",
+  tourDate: "",
+  days: 0,
+  nights: 0,
+  price: 0,
+  participants: [],
+};
 
 interface Props {
   openSheet: boolean;
+  updateTour?: Tour;
   onOpenSheetChange: (sheetState: boolean) => void;
+  onFormSubmit: (tour: Tour) => void;
 }
 
-const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
+const TableForm = ({
+  openSheet,
+  updateTour = emptyTour,
+  onOpenSheetChange,
+  onFormSubmit,
+}: Props) => {
   const { register, handleSubmit, reset } = useForm();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        setSelectedImage(reader.result as string);
-      };
-    }
-  };
+  //   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-
-    onOpenSheetChange(!openSheet);
+    const tourTemplateData: Tour = {
+      id: "",
+      tourName: data.tourName,
+      location: data.location,
+      //   tourImg: data.tourImg,
+      tourImg: "tourImg.png",
+      tourDate: data.tourDate,
+      days: parseInt(data.days),
+      nights: parseInt(data.nights),
+      price: parseInt(data.price),
+      participants: [],
+    };
+    onFormSubmit(tourTemplateData);
+    // setIsSubmitted(true);
     reset();
+    console.log("updateTour on Submit State: \n", updateTour);
+    updateTour = {} as Tour;
+    console.log("updateTour on Emptying State: \n", updateTour);
   };
+
+  //   useEffect(() => {
+  //     if (isSubmitted) {
+  //       reset();
+
+  //       setIsSubmitted(false); // Reset submission state after form reset
+  //     }
+  //   }, [isSubmitted, reset]);
+
   return (
     <div className="">
       {/* Sheet component */}
       <Sheet
         open={openSheet}
-        onOpenChange={() => onOpenSheetChange(!openSheet)}
+        onOpenChange={() => {
+          onOpenSheetChange(!openSheet);
+          //   setIsSubmitted(true);
+          updateTour = {} as Tour;
+          reset();
+          console.log("Sheet Focus Changed");
+        }}
       >
         <SheetContent className=" mr-7 md:mr-0 bg-eggshell shadow-custom">
           <SheetHeader>
@@ -63,8 +101,10 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 >
                   Tour Name
                 </label>
+                <p>{updateTour.tourName}</p>
                 <input
                   {...register("tourName")}
+                  defaultValue={updateTour.tourName}
                   id="tourName"
                   type="text"
                   placeholder="Enter Tour Name"
@@ -82,6 +122,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 </label>
                 <input
                   {...register("location")}
+                  defaultValue={updateTour.location}
                   id="location"
                   type="text"
                   placeholder="Enter Tour Location"
@@ -98,9 +139,10 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                   Date
                 </label>
                 <input
-                  {...register("date")}
-                  id="date"
-                  type="date"
+                  {...register("tourDate")}
+                  defaultValue={updateTour.tourDate}
+                  id="tourDate"
+                  type="text"
                   placeholder="Enter Tour date"
                   required
                   className="block w-full mt-0 text-base font-light border-0 border-b-2 border-lightGreen bg-eggshell md:text-xl focus:ring-0 focus:border-darkGreen"
@@ -116,6 +158,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 </label>
                 <input
                   {...register("days")}
+                  defaultValue={updateTour.days}
                   id="days"
                   type="number"
                   placeholder="Enter Tour Days"
@@ -133,6 +176,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 </label>
                 <input
                   {...register("nights")}
+                  defaultValue={updateTour.nights}
                   id="nights"
                   type="number"
                   placeholder="Enter Tour Nights"
@@ -150,6 +194,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 </label>
                 <input
                   {...register("price")}
+                  defaultValue={updateTour.price}
                   id="price"
                   type="number"
                   placeholder="Enter Tour Price"
@@ -158,7 +203,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 />
               </div>
               {/* TOUR IMAGE */}
-              <div className="grid items-center gap-0 grid-row-2">
+              {/* <div className="grid items-center gap-0 grid-row-2">
                 <label
                   htmlFor="image"
                   className="px-2 text-lg font-medium md:text-2xl"
@@ -167,6 +212,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 </label>
                 <input
                   {...register("image")}
+                //   value={updateTour.tourImg}
                   id="image"
                   type="file"
                   accept="image/*"
@@ -175,7 +221,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                   required
                   className="block w-full py-4 mt-0 text-base font-light bg-eggshell md:text-xl focus:ring-0 focus:border-darkGreen"
                 />
-              </div>
+              </div> */}
               {/* FORM SUBMIT */}
               <Button
                 type="submit"
@@ -193,7 +239,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                 </Button>
               </SheetClose> */}
               {/* IMAGE PREVIEW */}
-              {selectedImage && (
+              {/* {selectedImage && (
                 <div className="grid items-center gap-0 grid-row-2">
                   <label className="px-2 text-lg font-medium md:text-2xl">
                     Preview
@@ -206,7 +252,7 @@ const TableForm = ({ openSheet, onOpenSheetChange }: Props) => {
                     />
                   </div>
                 </div>
-              )}
+              )} */}
             </form>
           </div>
 

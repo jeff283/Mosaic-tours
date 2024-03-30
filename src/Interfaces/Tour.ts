@@ -3,7 +3,7 @@ export default interface Tour {
   tourName: string;
   location: string;
   tourImg: string;
-  tourDate: Date;
+  tourDate: string;
   days: number;
   nights: number;
   price: number;

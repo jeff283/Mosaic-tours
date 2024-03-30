@@ -22,160 +22,21 @@ import { FaEllipsisV } from "react-icons/fa";
 import { Button } from "./ui/button";
 // import { BsThreeDotsVertical } from "react-icons/bs";
 
-const toursData: Tour[] = [
-  {
-    id: "1",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "2",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "3",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "4",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "5",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "6",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "7",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "8",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "9",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "10",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "11",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: new Date("2024-04-25"),
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-];
+interface Props {
+  toursData: Tour[];
+  onEditTour: (tour: Tour) => void;
+  onDeleteTour: (tour: Tour) => void;
+}
 
-export function TableDisplay() {
-  // CR will be handled by an upper component, this component only handles the data it's given
-  // Create
-  // const handleAddTour = (tour: Tour) => {
-  //   console.log(tour);
-  // };
-  // // Read
-  // const handleGetTours = () => {
-  //   console.log("Get Tours");
-  // };
-
+export function TableDisplay({ toursData, onEditTour, onDeleteTour }: Props) {
   // Update
   const handleUpdateTour = (tour: Tour) => {
-    console.log(tour);
+    onEditTour(tour);
   };
 
   // Delete
   const handleDeleteTour = (tour: Tour) => {
-    console.log(tour);
+    onDeleteTour(tour);
   };
 
   return (
@@ -208,16 +69,14 @@ export function TableDisplay() {
                 <TableCell className="hidden md:table-cell">
                   {tour.location}
                 </TableCell>
-                <TableCell className="table-cell md:hidden">
-                  {tour.tourDate.toLocaleDateString("en-GB")}
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
+                <TableCell className="">{tour.tourDate}</TableCell>
+                {/* <TableCell className="hidden md:table-cell">
                   {tour.tourDate.getDate().toString().padStart(2, "0")}
                   {"-"}
                   {tour.tourDate.toLocaleString("default", { month: "short" })}
                   {"-"}
                   {tour.tourDate.getFullYear()}
-                </TableCell>
+                </TableCell> */}
                 <TableCell className="hidden md:table-cell">
                   {tour.days}
                 </TableCell>
