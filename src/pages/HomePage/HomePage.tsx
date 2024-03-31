@@ -64,12 +64,12 @@ const HomePage = () => {
               </p>
               {/* CTA btn  */}
               <div className="w-1/2 md:w-1/3">
-                <a
-                  href="/"
+                <NavLink
+                  to="/tours"
                   className="block text-center font-medium text-3xl bg-eggshell text-darkGreen border border-eggshell px-6 py-1.5 pb-2 rounded-full align-middle hover:text-eggshell hover:bg-darkGreen md:block lgMax:px-2 lgMax:py-1 lgMax:pb-1 lgMax:text-2xl"
                 >
                   Book A Tour
-                </a>
+                </NavLink>
               </div>
             </div>
             {/* Right Container */}

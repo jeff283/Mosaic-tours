@@ -7,15 +7,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 
 const ContactUs = () => {
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: {
-      fname: "",
-      lname: "",
-      phone: "",
-      email: "",
-      message: "",
-    },
-  });
+  const { register, handleSubmit, reset } = useForm({});
 
   const onSubmit = async (data: FieldValues) => {
     data;

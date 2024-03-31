@@ -72,12 +72,12 @@ const Navbar = () => {
             </NavLink>
           </div>
           {/* CTA Button */}
-          <a
-            href="/"
+          <NavLink
+            to="/tours"
             className="hidden  font-bold text-2xl bg-eggshell text-darkGreen border border-eggshell px-6 py-1.5 pb-2 rounded-full align-middle hover:text-eggshell hover:bg-darkGreen md:block lgMax:px-2 lgMax:py-1 lgMax:pb-1 lgMax:text-lg"
           >
             Book Now
-          </a>
+          </NavLink>
           {/* Hamburger Icon */}
           <GiHamburgerMenu
             onClick={() => setOpenHamMenu(!openHamMenu)}
