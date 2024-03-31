@@ -1,7 +1,7 @@
 import PortalSidebar from "./PortalSidebar";
 import PortalSidebarItem from "./PortalSidebarItem";
 import { MdDashboard } from "react-icons/md";
-import { FaMap, FaBook } from "react-icons/fa";
+import { FaMap } from "react-icons/fa";
 
 const AdminPortalSidebar = () => {
   return (

@@ -4,6 +4,7 @@ import MosaicLogo from "../../assets/SVGs/Mosaic Logo Dark.svg";
 import { FieldValues, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { FaLock } from "react-icons/fa";
 // import { PiContactlessPayment } from "react-icons/pi";
 
 const PaymentPage = () => {
@@ -21,7 +22,7 @@ const PaymentPage = () => {
       <div className="flex flex-col-reverse md:justify-between md:flex-row">
         {/* Left Container */}
         {/* Personal Details */}
-        <div className="md:w-1/2 ">
+        <div className=" md:w-1/2">
           {/* Title */}
           <div className="">
             <h2 className="p-2 pt-6 text-3xl font-bold xl:pt-16 shadow-custom">
@@ -30,7 +31,7 @@ const PaymentPage = () => {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-3 py-6 xl:gap-8"
+            className="flex flex-col gap-3 py-4 xl:gap-8"
           >
             {/* Basic Information */}
             <div className="p-2 text-2xl font-semibold shadow-custom">
@@ -170,7 +171,10 @@ const PaymentPage = () => {
             <h1 className="text-5xl font-bold xl:text-6xl text-darkGreen">
               Ksh 120,000
             </h1>
-            <p className="text-xl">Secure Payment</p>
+            <div className="flex items-center justify-center gap-2">
+              <FaLock />
+              <p className="text-xl">Secure Payment</p>
+            </div>
           </div>
           <Separator className="bg-darkGreen" />
           {/* Order Summary */}
