@@ -41,23 +41,18 @@ const AdminPortalTours = () => {
     setUpdateTour(tour);
     // Tell Form we Are Updating
     setIsUpdatingTour(true);
-
-    // console.log(tour);
   };
 
   // Delete from list
   const handleDeleteTour = (tour: Tour) => {
-    console.log("Delete Tour: \n", tour);
     deleteTour(tour);
   };
 
   // Submit from form
   const handleFormSubmit = (tour: Tour) => {
     if (isUpdatingTour) {
-      console.log("Updated Tour: ", tour);
       updateDbTour(tour);
     } else {
-      console.log("Created Tour: ", tour);
       createTour(tour);
     }
   };
@@ -86,7 +81,6 @@ const AdminPortalTours = () => {
   const createTour = (tour: Tour) => {
     addDoc(tourCollectionRef, tour)
       .then(() => {
-        // console.log(docRef.id);
         getTourList();
       })
       .catch((err) => {
@@ -142,7 +136,6 @@ const AdminPortalTours = () => {
   // USE EFFECTS
   useEffect(() => {
     getTourList();
-    // console.log("Fetching Tours: \n", tourList);
   }, []);
 
   return (

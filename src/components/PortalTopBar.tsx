@@ -15,7 +15,6 @@ const PortalTopBar = ({ pageTitle }: Props) => {
 
   const handleLogout = () => {
     signOut(auth);
-    console.log("Out");
   };
 
   useEffect(() => {

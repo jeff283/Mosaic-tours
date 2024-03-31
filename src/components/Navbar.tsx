@@ -12,7 +12,6 @@ const Navbar = () => {
     element?.scrollIntoView({
       behavior: "smooth",
     });
-    // console.log(id);
   };
   return (
     <>

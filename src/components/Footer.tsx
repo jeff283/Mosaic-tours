@@ -10,20 +10,19 @@ const Footer = () => {
     element?.scrollIntoView({
       behavior: "smooth",
     });
-    console.log(id);
   };
 
   return (
     <>
       {/* Container */}
-      <div className="px-5 py-6  md:px-20 md:py-12 bg-darkGreen text-white ">
-        <div className=" flex  justify-between">
+      <div className="px-5 py-6 text-white md:px-20 md:py-12 bg-darkGreen ">
+        <div className="flex justify-between ">
           {/*Site Links */}
           <div className="">
             {/* Title */}
-            <h2 className="text-2xl md:text-3xl font-semibold pb-4">Links</h2>
+            <h2 className="pb-4 text-2xl font-semibold md:text-3xl">Links</h2>
             {/*  Links */}
-            <div className="text-xl md:text-2xl font-light space-y-2 flex flex-col navbar-links">
+            <div className="flex flex-col space-y-2 text-xl font-light md:text-2xl navbar-links">
               <NavLink
                 to="#home"
                 onClick={(event) => {
@@ -73,9 +72,9 @@ const Footer = () => {
           </div>
 
           {/* Logos */}
-          <div className="hidden md:flex flex-col items-center space-y-4">
+          <div className="flex-col items-center hidden space-y-4 md:flex">
             <img src={MosaicDarkLogo} alt="Mosaic's Logo" />
-            <p className="font-medium text-2xl">Follow Us</p>
+            <p className="text-2xl font-medium">Follow Us</p>
             {/* SM Icons */}
             <div className="flex justify-between space-x-10">
               <FaFacebook size={32} />
@@ -87,20 +86,20 @@ const Footer = () => {
           {/* Portals */}
           <div className="">
             {/* Title */}
-            <h2 className="text-2xl md:text-3xl font-semibold pb-4">Portals</h2>
+            <h2 className="pb-4 text-2xl font-semibold md:text-3xl">Portals</h2>
             {/* Links */}
-            <div className="text-xl md:text-2xl font-light space-y-2 flex flex-col navbar-links">
+            <div className="flex flex-col space-y-2 text-xl font-light md:text-2xl navbar-links">
               <NavLink to="/admin-portal/dashboard">Admin Portal</NavLink>
               {/* <NavLink to="#home">Customer Portal</NavLink> */}
             </div>
           </div>
         </div>
         {/* Logos */}
-        <div className="md:hidden smMax:flex flex-col items-center space-y-4 pt-8">
+        <div className="flex-col items-center pt-8 space-y-4 md:hidden smMax:flex">
           <img src={MosaicDarkLogo} alt="Mosaic's Logo" />
-          <p className="font-medium text-2xl">Follow Us</p>
+          <p className="text-2xl font-medium">Follow Us</p>
           {/* SM Icons */}
-          <div className="flex justify-between space-x-10 w-1/2">
+          <div className="flex justify-between w-1/2 space-x-10">
             <FaFacebook size={32} />
             <FaInstagram size={32} />
             <FaXTwitter size={32} />
