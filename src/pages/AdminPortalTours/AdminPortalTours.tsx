@@ -19,8 +19,10 @@ import { db } from "../../config/firebase";
 import {
   addDoc,
   collection,
-  // doc,
+  deleteDoc,
+  doc,
   getDocs,
+  updateDoc,
   // updateDoc,
 } from "firebase/firestore";
 
@@ -45,13 +47,15 @@ const AdminPortalTours = () => {
 
   // Delete from list
   const handleDeleteTour = (tour: Tour) => {
-    console.log(tour);
+    console.log("Delete Tour: \n", tour);
+    deleteTour(tour);
   };
 
   // Submit from form
   const handleFormSubmit = (tour: Tour) => {
     if (isUpdatingTour) {
       console.log("Updated Tour: ", tour);
+      updateDbTour(tour);
     } else {
       console.log("Created Tour: ", tour);
       createTour(tour);
@@ -90,9 +94,55 @@ const AdminPortalTours = () => {
       });
   };
 
+  //  UPDATE TOUR
+
+  const updateDbTour = (tour: Tour) => {
+    const newUpdatedTour = {
+      // id: "1",
+      tourName: tour.tourName,
+      location: tour.location,
+      tourImg: tour.tourImg,
+      tourDate: tour.tourDate,
+      days: tour.days,
+      nights: tour.nights,
+      price: tour.price,
+      participants: tour.participants,
+    };
+    if (tour.id) {
+      const tourDoc = doc(db, "mosaicTours", tour.id);
+      delete tour.id;
+      updateDoc(tourDoc, newUpdatedTour)
+        .then(() => {
+          getTourList();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      console.error("No Tour ID was provided");
+    }
+  };
+
+  //  DELETE TOUR
+  const deleteTour = (tour: Tour) => {
+    if (tour.id) {
+      const tourDoc = doc(db, "mosaicTours", tour.id);
+      deleteDoc(tourDoc)
+        .then(() => {
+          getTourList();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      console.error("No Tour ID was provided");
+    }
+  };
+
   // USE EFFECTS
   useEffect(() => {
     getTourList();
+    // console.log("Fetching Tours: \n", tourList);
   }, []);
 
   return (

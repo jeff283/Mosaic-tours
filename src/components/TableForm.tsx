@@ -58,18 +58,35 @@ const TableForm = ({
   const loremPics = `https://picsum.photos/330/260?random=${getRandomInteger()}`;
 
   const onSubmit = async (data: FieldValues) => {
-    const tourTemplateData: Tour = {
-      // id: "",
-      tourName: data.tourName,
-      location: data.location,
-      tourImg: loremPics,
-      tourDate: data.tourDate,
-      days: data.days,
-      nights: data.nights,
-      price: data.price,
-      participants: [],
-    };
-    onFormSubmit(tourTemplateData);
+    const updateTourLength = Object.keys(updateTour).length;
+    if (updateTour && updateTourLength > 0) {
+      const tourUpdateTemplateData: Tour = {
+        id: updateTour.id,
+        tourName: data.tourName,
+        location: data.location,
+        tourImg: updateTour.tourImg,
+        tourDate: data.tourDate,
+        days: data.days,
+        nights: data.nights,
+        price: data.price,
+        participants: updateTour.participants,
+      };
+      onFormSubmit(tourUpdateTemplateData);
+    } else {
+      const tourNewTemplateData: Tour = {
+        // id: "",
+        tourName: data.tourName,
+        location: data.location,
+        tourImg: loremPics,
+        tourDate: data.tourDate,
+        days: data.days,
+        nights: data.nights,
+        price: data.price,
+        participants: [],
+      };
+      onFormSubmit(tourNewTemplateData);
+    }
+
     reset();
 
     clearUpdateTour();

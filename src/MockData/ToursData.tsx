@@ -7,7 +7,6 @@ export const toursData: Tour[] = [
     location: "Meru, Kenya",
     tourImg: "png",
     tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
     days: 5,
     nights: 4,
     price: 200000,

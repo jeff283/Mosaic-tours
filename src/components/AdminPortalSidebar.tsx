@@ -17,11 +17,11 @@ const AdminPortalSidebar = () => {
           itemLink="/admin-portal/tours"
           Icon=<FaMap size="48" />
         />
-        <PortalSidebarItem
+        {/* <PortalSidebarItem
           itemName="Bookings"
           itemLink="/admin-portal/bookings"
           Icon=<FaBook size="48" />
-        />
+        /> */}
       </PortalSidebar>
     </>
   );
