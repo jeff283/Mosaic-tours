@@ -1,152 +1,37 @@
+// COMPONENTS
 import AdminPortalSidebar from "@/components/AdminPortalSidebar";
 import PortalTopBar from "@/components/PortalTopBar";
-import { TableDisplay } from "@/components/TableDisplay";
+import TableDisplay from "@/components/TableDisplay";
 import TableForm from "@/components/TableForm";
+// SHADCN COMPONENTS
 import { Button } from "@/components/ui/button";
-import Tour from "@/Interfaces/Tour";
-import { useState } from "react";
 
-const toursData: Tour[] = [
-  {
-    id: "1",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "2",
-    tourName: "Mount Longonot",
-    location: "Mai Mahui, Kenya",
-    tourImg: "png",
-    tourDate: "2024-02-05",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "3",
-    tourName: "Masaai Mara",
-    location: "Narok, Kenya",
-    tourImg: "png",
-    tourDate: "2024-07-15",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "4",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "5",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "6",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "7",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "8",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "9",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "10",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-  {
-    id: "11",
-    tourName: "Mount Kenya",
-    location: "Meru, Kenya",
-    tourImg: "png",
-    tourDate: "2024-04-25",
-    // tourDate: "25/04/2024",
-    days: 5,
-    nights: 4,
-    price: 200000,
-    participants: [],
-  },
-];
+// INTERFACES
+import Tour from "@/Interfaces/Tour";
+
+// LIBARIES
+import { useEffect, useState } from "react";
+
+// CONFIGS
+import { db } from "../../config/firebase";
+
+// FIREBASE
+import {
+  addDoc,
+  collection,
+  // doc,
+  getDocs,
+  // updateDoc,
+} from "firebase/firestore";
 
 const AdminPortalTours = () => {
+  // STATES
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isUpdatingTour, setIsUpdatingTour] = useState(false);
   const [updateTour, setUpdateTour] = useState<Tour>({} as Tour);
+  const [tourList, setTourList] = useState<Tour[]>({} as Tour[]);
 
-  // Update
+  // Update from list
   const handleUpdateTour = (tour: Tour) => {
     // Open Form
     setIsSheetOpen(true);
@@ -158,18 +43,57 @@ const AdminPortalTours = () => {
     // console.log(tour);
   };
 
-  // Delete
+  // Delete from list
   const handleDeleteTour = (tour: Tour) => {
     console.log(tour);
   };
 
+  // Submit from form
   const handleFormSubmit = (tour: Tour) => {
     if (isUpdatingTour) {
       console.log("Updated Tour: ", tour);
     } else {
       console.log("Created Tour: ", tour);
+      createTour(tour);
     }
   };
+
+  // FIREBASE FIRESTORE
+
+  const tourCollectionRef = collection(db, "mosaicTours");
+  // Firebase Get
+
+  const getTourList = () => {
+    getDocs(tourCollectionRef)
+      .then((data) => {
+        const filterData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setTourList(filterData as Tour[]);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  // Firebase Create
+
+  const createTour = (tour: Tour) => {
+    addDoc(tourCollectionRef, tour)
+      .then(() => {
+        // console.log(docRef.id);
+        getTourList();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  // USE EFFECTS
+  useEffect(() => {
+    getTourList();
+  }, []);
 
   return (
     <div className="flex bg-eggshell">
@@ -183,9 +107,6 @@ const AdminPortalTours = () => {
               className="px-6 text-xl border border-darkGreen bg-darkGreen md:text-2xl md:px-12 md:py-5 hover:text-darkGreen hover:bg-eggshell"
               onClick={() => {
                 setIsSheetOpen(true);
-                console.log("Update Tour on Add Click:\n", updateTour);
-                setUpdateTour({} as Tour);
-                console.log("Update Tour on Add Click After:\n", updateTour);
               }}
             >
               Add Tour
@@ -212,7 +133,8 @@ const AdminPortalTours = () => {
 
           <div className="">
             <TableDisplay
-              toursData={toursData}
+              // toursData={toursData}
+              toursData={tourList}
               onEditTour={(tour) => handleUpdateTour(tour)}
               onDeleteTour={(tour) => handleDeleteTour(tour)}
             />

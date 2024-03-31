@@ -14,17 +14,48 @@ import SarahHomer from "../../assets/imgs/SarahHomer.png";
 import ContactUsImg from "../../assets/imgs/ContactUs.png";
 import { NavLink } from "react-router-dom";
 
+import { db } from "@/config/firebase";
+import Tour from "@/Interfaces/Tour";
+import { collection, getDocs, limit, query } from "firebase/firestore";
+import { useEffect, useState } from "react";
+
 const HomePage = () => {
+  const [tourList, setTourList] = useState<Tour[]>({} as Tour[]);
+
+  // FIREBASE FIRESTORE
+
+  const tourCollectionRef = collection(db, "mosaicTours");
+  // Firebase Get
+
+  const getTourList = () => {
+    const q = query(tourCollectionRef, limit(5));
+    getDocs(q)
+      .then((data) => {
+        const filterData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setTourList(filterData as Tour[]);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  // USE EFFECTS
+  useEffect(() => {
+    getTourList();
+  }, []);
   return (
     <div className="bg-eggshell">
       <Navbar />
       {/* Hero Section */}
       <section id="home">
-        <div className=" bg-darkGreen pt-6 pb-4 md:pt-36  ">
-          <div className="flex flex-col-reverse justify-between items-center  text-white px-5  md:px-20 md:flex-row ">
+        <div className="pt-6 pb-4 bg-darkGreen md:pt-36">
+          <div className="flex flex-col-reverse items-center justify-between px-5 text-white md:px-20 md:flex-row ">
             {/* Left Container */}
             <div className="space-y-8 smMax:pt-8 md:space-y-16">
-              <h1 className="font-bold text-4xl w-3/4 md:text-6xl">
+              <h1 className="w-3/4 text-4xl font-bold md:text-6xl">
                 Discover a World Within Kenya
               </h1>
               <p className="text-xl font-light md:text-2xl md:w-1/2 ">
@@ -47,7 +78,7 @@ const HomePage = () => {
             </div>
           </div>
           {/* Locations */}
-          <div className="bg-darkGreen text-eggshell  justify-between hidden md:flex md:px-20 text-lg pt-16 ">
+          <div className="justify-between hidden pt-16 text-lg bg-darkGreen text-eggshell md:flex md:px-20 ">
             <span className="opacity-20 ">Mount Kenya </span>
             <span className="opacity-20">Nairobi National Park </span>
             <span className="opacity-20 ">Mount Longonot National Park</span>
@@ -61,18 +92,25 @@ const HomePage = () => {
       {/* Tours Section */}
       <section id="tours">
         {/* Container */}
-        <div className="px-5 py-6  md:px-20 md:py-12">
+        <div className="px-5 py-6 md:px-20 md:py-12">
           {/* Top Bar */}
-          <div className="flex justify-between items-center font-bold text-darkGreen pb-16">
+          <div className="flex items-center justify-between pb-16 font-bold text-darkGreen">
             <h2 className="text-4xl md:text-5xl ">Tours</h2>
-            <div className="text-2xl md:text-3xl  cursor-pointer navbar-links navbar-links-darkGreen ">
+            <div className="text-2xl cursor-pointer md:text-3xl navbar-links navbar-links-darkGreen ">
               <NavLink to="/tours">See all</NavLink>
             </div>
           </div>
           {/* Card Container */}
           <div className="flex justify-center">
             {/* Cards */}
-            <TourCarousel />
+            {tourList && tourList.length > 0 ? (
+              <TourCarousel tours={tourList} />
+            ) : (
+              <div className="w-full gap-3 text-center">
+                <h2 className="text-4xl font-bold">No Tours Available</h2>
+                <h3 className="text-2xl font-medium">Please come back later</h3>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -80,22 +118,22 @@ const HomePage = () => {
       {/* About Us */}
       <section id="about">
         {/* Container */}
-        <div className="px-5 py-6  md:px-20 md:py-12">
+        <div className="px-5 py-6 md:px-20 md:py-12">
           {/* Title */}
-          <h2 className="font-bold pb-5 md:pb-10 text-darkGreen text-4xl md:text-5xl">
+          <h2 className="pb-5 text-4xl font-bold md:pb-10 text-darkGreen md:text-5xl">
             About Us
           </h2>
           {/* Flex Container */}
-          <div className="space-y-8 md:flex md:justify-between mx-auto md:space-x-6">
+          <div className="mx-auto space-y-8 md:flex md:justify-between md:space-x-6">
             {/* Left Img */}
             <div>
               <img src={cheifGuide} alt="Chief Tour Guide" />
             </div>
             {/* Right Content Flex */}
-            <div className=" md:w-3/5  space-y-8 md:space-y-16">
+            <div className="space-y-8 md:w-3/5 md:space-y-16">
               {/* Content */}
               <div className="space-y-4 md:space-y-8">
-                <h3 className="font-bold text-2xl md:text-3xl text-lightGreen">
+                <h3 className="text-2xl font-bold md:text-3xl text-lightGreen">
                   Curated Experiences, Crafted with Care
                 </h3>
                 <p className="text-lg md:text-2xl text-lightGray">
@@ -109,16 +147,16 @@ const HomePage = () => {
               </div>
               {/* Awards Container*/}
               {/* <div className="flex flex-col items-center space-y-8 md:flex-row md:justify-between md:space-x-4 md:px-4 "> */}
-              <div className=" flex gap-5 items-center justify-between ">
+              <div className="flex items-center justify-between gap-5 ">
                 {/* Award 1 */}
-                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center custom-shadow">
+                <div className="flex-grow p-3 text-center rounded-xl md:rounded-3xl md:p-5 custom-shadow">
                   <div className="text-3xl md:text-5xl">20+</div>
                   <div className="text-xl md:text-2xl text-lightGray">
                     Awards Won
                   </div>
                 </div>
                 {/* Award 2 */}
-                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center custom-shadow">
+                <div className="flex-grow p-3 text-center rounded-xl md:rounded-3xl md:p-5 custom-shadow">
                   <div className="text-3xl md:text-5xl">12K+</div>
                   <div className="text-xl md:text-2xl text-lightGray">
                     Success Tours
@@ -126,7 +164,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Award 3 */}
-                <div className="flex-grow rounded-xl md:rounded-3xl p-3 md:p-5 text-center custom-shadow">
+                <div className="flex-grow p-3 text-center rounded-xl md:rounded-3xl md:p-5 custom-shadow">
                   <div className="text-3xl md:text-5xl">16+</div>
                   <div className="text-xl md:text-2xl text-lightGray">
                     Years of Experience
@@ -142,63 +180,63 @@ const HomePage = () => {
 
       <section id="reviews">
         {/* Container */}
-        <div className="px-5 py-6   md:px-20 md:py-12 ">
+        <div className="px-5 py-6 md:px-20 md:py-12 ">
           {/* Title */}
-          <h2 className="font-bold pb-5 md:pb-10 text-darkGreen text-4xl md:text-5xl">
+          <h2 className="pb-5 text-4xl font-bold md:pb-10 text-darkGreen md:text-5xl">
             Customer Reviews
           </h2>
           {/* Review Container */}
           <div className="flex justify-between ">
             {/* Review 1 */}
-            <div className=" flex flex-col justify-center items-center custom-shadow space-y-2 p-5  text-center  rounded-3xl md:w-1/4">
+            <div className="flex flex-col items-center justify-center p-5 space-y-2 text-center custom-shadow rounded-3xl md:w-1/4">
               {/* Img */}
-              <div className=" py-2">
+              <div className="py-2 ">
                 <img src={SarahHomer} alt="Sarah Homer" />
               </div>
               {/* Name */}
-              <h3 className="font-bold text-3xl">Sarah Homer</h3>
+              <h3 className="text-3xl font-bold">Sarah Homer</h3>
               {/* Rating */}
               <div>
                 <img src={fiveStars} alt="5 Stars" />
               </div>
               {/* Content */}
-              <p className="text-xl pb-4">
+              <p className="pb-4 text-xl">
                 Mosaic Tours unveiled a hidden Kenya - stunning hikes, vibrant
                 cultures, and unforgettable memories!
               </p>
             </div>
             {/* Review 2 */}
-            <div className=" hidden flex-col justify-center items-center custom-shadow space-y-2 p-5  text-center  rounded-3xl md:w-1/4 md:flex">
+            <div className="flex-col items-center justify-center hidden p-5 space-y-2 text-center custom-shadow rounded-3xl md:w-1/4 md:flex">
               {/* Img */}
-              <div className=" py-2">
+              <div className="py-2 ">
                 <img src={DavidLaner} alt="David Laner" />
               </div>
               {/* Name */}
-              <h3 className="font-bold text-3xl">David Laner</h3>
+              <h3 className="text-3xl font-bold">David Laner</h3>
               {/* Rating */}
               <div>
                 <img src={fiveStars} alt="5 Stars" />
               </div>
               {/* Content */}
-              <p className="text-xl pb-4">
+              <p className="pb-4 text-xl">
                 Personalized Kenyan adventure with Mosaic Tours: from Masai Mara
                 safaris to Mombasa's history.
               </p>
             </div>
             {/* Review 3 */}
-            <div className=" hidden flex-col justify-center items-center custom-shadow space-y-2 p-5  text-center  rounded-3xl md:w-1/4 md:flex">
+            <div className="flex-col items-center justify-center hidden p-5 space-y-2 text-center custom-shadow rounded-3xl md:w-1/4 md:flex">
               {/* Img */}
-              <div className=" py-2">
+              <div className="py-2 ">
                 <img src={SandraGwen} alt="Sandra Gwen" />
               </div>
               {/* Name */}
-              <h3 className="font-bold text-3xl">Sandra Gwen</h3>
+              <h3 className="text-3xl font-bold">Sandra Gwen</h3>
               {/* Rating */}
               <div>
                 <img src={fiveStars} alt="5 Stars" />
               </div>
               {/* Content */}
-              <p className="text-xl pb-4">
+              <p className="pb-4 text-xl">
                 Mosaic Tours exceeded expectations the landscapes, wildlife, and
                 authentic cultural experiences.
               </p>
@@ -211,9 +249,9 @@ const HomePage = () => {
 
       <section id="contact">
         {/* Container */}
-        <div className="px-5 py-6  md:px-20 md:py-12">
+        <div className="px-5 py-6 md:px-20 md:py-12">
           {/* Title */}
-          <h2 className="font-bold pb-5 md:pb-10 text-darkGreen text-4xl md:text-5xl">
+          <h2 className="pb-5 text-4xl font-bold md:pb-10 text-darkGreen md:text-5xl">
             Talk To Us
           </h2>
           {/* Talk to Us */}
@@ -225,7 +263,7 @@ const HomePage = () => {
               <img src={ContactUsImg} alt="Masaai Couple" />
 
               {/* Content Container*/}
-              <div className=" text-2xl space-y-8 py-10 ">
+              <div className="py-10 space-y-8 text-2xl ">
                 <div>Yala Towers, 4th Floor, Junction of Biashara street</div>
                 <div>Tel: +254 110467983</div>
                 <div>info@mosaic.com</div>

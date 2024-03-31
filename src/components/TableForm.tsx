@@ -50,12 +50,19 @@ const TableForm = ({
     setValue("price", updateTour.price || "");
   }, [updateTour, setValue]);
 
+  // Get random number for image creation
+  function getRandomInteger() {
+    return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+  }
+
+  const loremPics = `https://picsum.photos/330/260?random=${getRandomInteger()}`;
+
   const onSubmit = async (data: FieldValues) => {
     const tourTemplateData: Tour = {
-      id: "",
+      // id: "",
       tourName: data.tourName,
       location: data.location,
-      tourImg: "tourImg.png",
+      tourImg: loremPics,
       tourDate: data.tourDate,
       days: data.days,
       nights: data.nights,

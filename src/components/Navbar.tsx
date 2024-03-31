@@ -7,29 +7,32 @@ import { useState } from "react";
 const Navbar = () => {
   const [openHamMenu, setOpenHamMenu] = useState(false);
   const switchPages = (id: string) => {
+    // redirect("/");
     const element = document.getElementById(id);
     element?.scrollIntoView({
       behavior: "smooth",
     });
-    console.log(id);
+    // console.log(id);
   };
   return (
     <>
-      <nav className="bg-darkGreen w-full px-4  md:px-16 relative text-white">
+      <nav className="relative w-full px-4 text-white bg-darkGreen md:px-16">
         {/* Flex Container */}
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="py-1">
-            <img
-              className="lgMax:h-10"
-              src={MosaicDarkLogo}
-              alt="Mosaic's Logo"
-            />
+            <NavLink to="/">
+              <img
+                className="lgMax:h-10"
+                src={MosaicDarkLogo}
+                alt="Mosaic's Logo"
+              />
+            </NavLink>
           </div>
           {/* Menu Items */}
-          <div className=" hidden navbar-links  space-x-12 text-2xl md:flex lgMax:text-lg lg:space-x-24">
+          <div className="hidden space-x-12 text-2xl navbar-links md:flex lgMax:text-lg lg:space-x-24">
             <NavLink
-              to="#home"
+              to="/#home"
               className="font-bold"
               onClick={(event) => {
                 event.preventDefault();
@@ -39,7 +42,7 @@ const Navbar = () => {
               Home
             </NavLink>
             <NavLink
-              to="#tours"
+              to="/#tours"
               className="font-bold"
               onClick={(event) => {
                 event.preventDefault();
@@ -49,7 +52,7 @@ const Navbar = () => {
               Tours
             </NavLink>
             <NavLink
-              to="#about"
+              to="/#about"
               className="font-bold"
               onClick={(event) => {
                 event.preventDefault();
@@ -59,7 +62,7 @@ const Navbar = () => {
               About Us
             </NavLink>
             <NavLink
-              to="#contact"
+              to="/#contact"
               className="font-bold"
               onClick={(event) => {
                 event.preventDefault();
