@@ -94,7 +94,7 @@ const Footer = () => {
             <h2 className="pb-4 text-2xl font-semibold md:text-3xl">Portals</h2>
             {/* Links */}
             <div className="flex flex-col space-y-2 text-xl font-light md:text-2xl navbar-links">
-              <NavLink to="/admin-portal/dashboard">Admin Portal</NavLink>
+              <NavLink to="/admin-portal/tours">Admin Portal</NavLink>
               <NavLink to="/" onClick={handleLogout}>
                 Log Out
               </NavLink>

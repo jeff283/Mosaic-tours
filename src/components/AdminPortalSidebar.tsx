@@ -1,17 +1,17 @@
 import PortalSidebar from "./PortalSidebar";
 import PortalSidebarItem from "./PortalSidebarItem";
-import { MdDashboard } from "react-icons/md";
+// import { MdDashboard } from "react-icons/md";
 import { FaMap } from "react-icons/fa";
 
 const AdminPortalSidebar = () => {
   return (
     <>
       <PortalSidebar>
-        <PortalSidebarItem
+        {/* <PortalSidebarItem
           itemName="Dashboard"
           itemLink="/admin-portal/dashboard"
           Icon=<MdDashboard size="48" />
-        />
+        /> */}
         <PortalSidebarItem
           itemName="Tours"
           itemLink="/admin-portal/tours"

@@ -86,7 +86,7 @@ const LoginForm = () => {
             const userData = docSnap.data();
             const userAdmin = userData.isAdmin;
             if (userAdmin) {
-              navigate("/admin-portal/dashboard");
+              navigate("/admin-portal/tours");
             } else {
               navigate("/");
             }
