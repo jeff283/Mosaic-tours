@@ -3,8 +3,13 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 const Footer = () => {
+  const handleLogout = () => {
+    signOut(auth);
+  };
   const switchPages = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({
@@ -90,6 +95,9 @@ const Footer = () => {
             {/* Links */}
             <div className="flex flex-col space-y-2 text-xl font-light md:text-2xl navbar-links">
               <NavLink to="/admin-portal/dashboard">Admin Portal</NavLink>
+              <NavLink to="/" onClick={handleLogout}>
+                Log Out
+              </NavLink>
               {/* <NavLink to="#home">Customer Portal</NavLink> */}
             </div>
           </div>

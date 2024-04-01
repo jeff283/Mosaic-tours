@@ -1,10 +1,10 @@
-interface User {
+interface mosaicUser {
   id?: string;
   name: string;
-  phone: string;
   email: string;
   isAdmin: boolean;
+  // phone: string;
   // tour?: string;
 }
 
-export default User;
+export default mosaicUser;

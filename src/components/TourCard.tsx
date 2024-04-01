@@ -1,11 +1,16 @@
 import Tour from "@/Interfaces/Tour";
 import { PiCalendarFill } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   tour: Tour;
 }
 
 const TourCard = ({ tour }: Props) => {
+  const navigate = useNavigate();
+  const handleBookClick = (tourData: Tour) => {
+    navigate("/payment", { state: { tourData } });
+  };
   return (
     <div>
       {/*Card  Container */}
@@ -55,7 +60,10 @@ const TourCard = ({ tour }: Props) => {
         </div>
 
         {/* Button */}
-        <button className="w-full px-12 py-1.5   text-2xl font-semibold rounded-lg border-2 border-darkGreen text-eggshell bg-darkGreen hover:text-darkGreen hover:bg-eggshell">
+        <button
+          onClick={() => handleBookClick(tour)}
+          className="w-full px-12 py-1.5   text-2xl font-semibold rounded-lg border-2 border-darkGreen text-eggshell bg-darkGreen hover:text-darkGreen hover:bg-eggshell"
+        >
           Book Now
         </button>
       </div>

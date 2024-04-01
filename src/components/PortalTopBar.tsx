@@ -1,10 +1,9 @@
 import { GoPersonFill } from "react-icons/go";
 import { auth, db } from "../config/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import User from "../Interfaces/User";
+import User from "../Interfaces/mosaicUser";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-// import { useState } from "react";
 
 interface Props {
   pageTitle: string;
@@ -23,19 +22,15 @@ const PortalTopBar = ({ pageTitle }: Props) => {
         const uid = currentUser.uid;
 
         // Fetch user data from Firestore based on UID
-        const userRef = doc(db, "Users", uid);
+        const userRef = doc(db, "mosaicUsers", uid);
         const docSnap = await getDoc(userRef);
         if (docSnap.exists()) {
           const userData = docSnap.data();
           const allUserData: User = {
             id: uid,
             name: userData.name,
-            phone: userData.phone,
             email: userData.email,
-            // gender: userData.gender,
             isAdmin: userData.isAdmin,
-            // admNo: userData.admNo,
-            // roomId: userData.roomId,
           };
           setfetchedUser(allUserData);
         }
@@ -55,7 +50,6 @@ const PortalTopBar = ({ pageTitle }: Props) => {
         <div className="p-1 border rounded-full border-darkGreen bg-darkGreen text-eggshell hover:bg-eggshell hover:text-darkGreen">
           <GoPersonFill className="w-7 h-7 md:w-8 md:h-8" />
         </div>
-        {/* <div className="profile-name fz24 poppins-light">{pageUser || ""}</div> */}
         <div className="hidden text-2xl font-light md:block">
           {fetchedUser.name || "No Name"}
         </div>

@@ -23,7 +23,10 @@ const TourCarousel = ({ tours }: Props) => {
       <CarouselContent className="-ml-2 md:-ml-4">
         {/* {tours.map(tour: Tour)} */}
         {tours.map((tour: Tour) => (
-          <CarouselItem className="py-6 pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4">
+          <CarouselItem
+            key={tour.id}
+            className="py-6 pl-2 md:pl-4 smMax:basis-full md:basis-1/2 lg:basis-1/4"
+          >
             <TourCard tour={tour} />
           </CarouselItem>
         ))}
