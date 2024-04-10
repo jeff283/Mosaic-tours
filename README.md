@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Mosaic Tours Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installtion and Usage
 
-Currently, two official plugins are available:
+1. Install NVM
+  - For windows install NVM using [coreybutler's repo](https://github.com/coreybutler/nvm-windows)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Install node version 20.10.10 and activate it:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```powershell
+nvm install 20.10.0; nvm use 20.10.0;
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Dowload the zip file or clone [this repository](https://github.com/jeff283/Mosaic-tours)
+
+```powershell
+git clone https://github.com/jeff283/Mosaic-tours.git
+```
+
+4. Move to the repo's root folder:
+
+```powershell
+cd "mosaic-tours"
+```
+
+5. Install node modules:
+
+```powershell
+npm install
+```
+
+6. Run the dev version:
+
+```powershell
+npm run dev
+```
+
+7. Build for production. You will find the built files in the dist folder in the root directory of your clone of the app.
+
+```powershell
+npm run build
+```
+
+---
+
