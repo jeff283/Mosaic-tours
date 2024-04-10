@@ -26,9 +26,19 @@ interface Props {
   toursData: Tour[];
   onEditTour: (tour: Tour) => void;
   onDeleteTour: (tour: Tour) => void;
+  onClickParticipats: (tour: Tour) => void;
 }
 
-const TableDisplay = ({ toursData, onEditTour, onDeleteTour }: Props) => {
+const TableDisplay = ({
+  toursData,
+  onEditTour,
+  onDeleteTour,
+  onClickParticipats,
+}: Props) => {
+  // View Participants
+  const handleViewPrticipants = (tour: Tour) => {
+    onClickParticipats(tour);
+  };
   // Update
   const handleUpdateTour = (tour: Tour) => {
     onEditTour(tour);
@@ -59,10 +69,7 @@ const TableDisplay = ({ toursData, onEditTour, onDeleteTour }: Props) => {
                 <TableHead className="hidden md:table-cell">Action</TableHead>
               </TableRow>
             </TableHeader>
-            {/* </Table>
-    </div>
-    <div className="w-full">
-      <Table className="w-full"> */}
+
             <TableBody>
               {toursData.map((tour: Tour) => (
                 <TableRow key={tour.id}>
@@ -71,13 +78,7 @@ const TableDisplay = ({ toursData, onEditTour, onDeleteTour }: Props) => {
                     {tour.location}
                   </TableCell>
                   <TableCell className="">{tour.tourDate}</TableCell>
-                  {/* <TableCell className="hidden md:table-cell">
-                {tour.tourDate.getDate().toString().padStart(2, "0")}
-                {"-"}
-                {tour.tourDate.toLocaleString("default", { month: "short" })}
-                {"-"}
-                {tour.tourDate.getFullYear()}
-              </TableCell> */}
+
                   <TableCell className="hidden md:table-cell">
                     {tour.days}
                   </TableCell>
@@ -86,10 +87,32 @@ const TableDisplay = ({ toursData, onEditTour, onDeleteTour }: Props) => {
                   </TableCell>
                   <TableCell>{tour.price}</TableCell>
                   <TableCell className="hidden font-medium lg:table-cell">
-                    {tour.participants.length}
+                    <div
+                      onClick={() => {
+                        if (tour.participants.length > 0) {
+                          handleViewPrticipants(tour);
+                        }
+                      }}
+                      className={`${
+                        tour.participants.length > 0 &&
+                        "border rounded-md border-darkGreen hover:border-eggshell hover:text-eggshell hover:bg-darkGreen cursor-pointer"
+                      } inline-block px-4  `}
+                    >
+                      {tour.participants.length}
+                    </div>
+                    {/* <div
+                      className={`inline-block px-2 border rounded-md 
+              ${
+                tour.participants.length === 1
+                  ? "border-green-500"
+                  : "border-darkGreen"
+              } 
+              hover:border-eggshell hover:text-eggshell hover:bg-darkGreen`}
+                    >
+                      {tour.participants.length}
+                    </div> */}
                   </TableCell>
                   <TableCell className="">
-                    {/* <FaEllipsisV size={16} /> */}
                     <div>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>

@@ -3,11 +3,14 @@ import AdminPortalSidebar from "@/components/AdminPortalSidebar";
 import PortalTopBar from "@/components/PortalTopBar";
 import TableDisplay from "@/components/TableDisplay";
 import TableForm from "@/components/TableForm";
+import ViewParticipants from "@/components/ViewParticipants";
+
 // SHADCN COMPONENTS
 import { Button } from "@/components/ui/button";
 
 // INTERFACES
 import Tour from "@/Interfaces/Tour";
+import mosaicUser from "@/Interfaces/mosaicUser";
 
 // LIBARIES
 import { useEffect, useState } from "react";
@@ -21,6 +24,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   getDocs,
   updateDoc,
   // updateDoc,
@@ -29,9 +33,13 @@ import {
 const AdminPortalTours = () => {
   // STATES
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isViewPartcipants, setViewPartcipants] = useState(false);
   const [isUpdatingTour, setIsUpdatingTour] = useState(false);
   const [updateTour, setUpdateTour] = useState<Tour>({} as Tour);
   const [tourList, setTourList] = useState<Tour[]>({} as Tour[]);
+  const [participants, setParticipants] = useState<mosaicUser[]>(
+    [] as mosaicUser[]
+  );
 
   // Update from list
   const handleUpdateTour = (tour: Tour) => {
@@ -54,6 +62,48 @@ const AdminPortalTours = () => {
       updateDbTour(tour);
     } else {
       createTour(tour);
+    }
+  };
+
+  // // Handle Viewing Participants
+  // const handleClickPartcipants = (tour: Tour) => {
+  //   const tourPartcipants = tour.participants;
+  //   for (let i = 0; i < tourPartcipants.length; i++) {
+  //     const tp = tourPartcipants[i];
+  //     const docRef = doc(db, "mosaicUsers", tp);
+  //     getDoc(docRef)
+  //       .then((dt) => {
+  //         const userData = { ...dt.data(), id: dt.id };
+  //         console.log(userData);
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //     console.log(`Partcipant ${i}`, tp);
+  //   }
+  //   console.log(tourPartcipants);
+  // };
+
+  const handleClickPartcipants = async (tour: Tour) => {
+    const tourParticipants = tour.participants;
+
+    // Create an array to store promises for user data retrieval
+    const userPromises = tourParticipants.map((userID) => {
+      const docRef = doc(db, "mosaicUsers", userID);
+      return getDoc(docRef).then((dt) => ({ ...dt.data(), id: dt.id }));
+    });
+
+    // Wait for all user data promises to resolve
+    try {
+      const userData = await Promise.all(userPromises);
+      const mosaicUserData = userData as mosaicUser[];
+      // Update the participants state with the retrieved user data
+      setParticipants(mosaicUserData);
+      console.log(userData);
+
+      // setParticipants((prevParticipants) => [...prevParticipants, ...userData]);
+    } catch (err) {
+      console.error("Error getting user data:", err);
     }
   };
 
@@ -138,6 +188,12 @@ const AdminPortalTours = () => {
     getTourList();
   }, []);
 
+  useEffect(() => {
+    if (participants.length > 0) {
+      setViewPartcipants(true);
+    }
+  }, [participants]);
+
   return (
     <div className="flex bg-eggshell">
       <AdminPortalSidebar />
@@ -154,6 +210,12 @@ const AdminPortalTours = () => {
             >
               Add Tour
             </Button>
+            <ViewParticipants
+              openSheet={isViewPartcipants}
+              onOpenSheetChange={(sheetState) => setViewPartcipants(sheetState)}
+              mosaicUserArray={participants}
+            />
+
             <TableForm
               openSheet={isSheetOpen}
               updateTour={updateTour}
@@ -180,6 +242,7 @@ const AdminPortalTours = () => {
               toursData={tourList}
               onEditTour={(tour) => handleUpdateTour(tour)}
               onDeleteTour={(tour) => handleDeleteTour(tour)}
+              onClickParticipats={(tour) => handleClickPartcipants(tour)}
             />
           </div>
         </main>
