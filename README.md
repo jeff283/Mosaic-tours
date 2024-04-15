@@ -1,6 +1,6 @@
 # Mosaic Tours Website
 
-## Installtion and Usage
+## Installation and Usage
 
 1. Install NVM
   - For windows install NVM using [coreybutler's repo](https://github.com/coreybutler/nvm-windows)
