@@ -13,6 +13,7 @@ const Router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <ErrorPage /> },
   { path: "/tours", element: <ToursPage />, errorElement: <ErrorPage /> },
   { path: "/payment", element: <PaymentPage />, errorElement: <ErrorPage /> },
+
   {
     path: "/admin-portal/login",
     element: <Login />,
@@ -21,13 +22,11 @@ const Router = createBrowserRouter([
   {
     path: "/admin-portal/dashboard",
     element: <ProtectedRoutes component={<AdminPortalDashboard />} />,
-    // element: <AdminPortalDashboard />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/admin-portal/tours",
     element: <ProtectedRoutes component={<AdminPortalTours />} />,
-    // element: <AdminPortalTours />,
     errorElement: <ErrorPage />,
   },
 ]);
