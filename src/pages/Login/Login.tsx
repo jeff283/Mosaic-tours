@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import mosaicToursImg from "../../assets/imgs/mosaicToursImg.png";
+import mosaicToursImg from "../../assets/imgs/mosaicToursImg.webp";
 import MosaicLogoLight from "../../assets/SVGs/Mosaic Logo Light.svg";
 
 import LoginForm from "@/components/LoginForm";

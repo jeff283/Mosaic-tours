@@ -6,12 +6,12 @@ import TourCarousel from "@/components/TourCarousel";
 
 // Assets
 import fiveStars from "../../assets/SVGs/5-stars.svg";
-import heroImg from "../../assets/imgs/HeroImg.png";
-import cheifGuide from "../../assets/imgs/chiefGuide.png";
-import SandraGwen from "../../assets/imgs/SandraGwen.png";
-import DavidLaner from "../../assets/imgs/DavidLaner.png";
-import SarahHomer from "../../assets/imgs/SarahHomer.png";
-import ContactUsImg from "../../assets/imgs/ContactUs.png";
+import heroImg from "../../assets/imgs/HeroImg.webp";
+import cheifGuide from "../../assets/imgs/chiefGuide.webp";
+import SandraGwen from "../../assets/imgs/SandraGwen.webp";
+import DavidLaner from "../../assets/imgs/DavidLaner.webp";
+import SarahHomer from "../../assets/imgs/SarahHomer.webp";
+import ContactUsImg from "../../assets/imgs/ContactUs.webp";
 import { NavLink } from "react-router-dom";
 
 import { db } from "@/config/firebase";
