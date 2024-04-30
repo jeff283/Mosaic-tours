@@ -1,18 +1,33 @@
 import { createBrowserRouter } from "react-router-dom";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+// import { lazy, Suspense } from "react";
+
 import HomePage from "./pages/HomePage/HomePage";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import ToursPage from "./pages/ToursPage/ToursPage";
-import AdminPortalDashboard from "./pages/AdminPortalDashboard/AdminPortalDashboard";
-import AdminPortalTours from "./pages/AdminPortalTours/AdminPortalTours";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 
 import Login from "./pages/Login/Login";
-import ProtectedRoutes from "./components/ProtectedRoutes";
+import AdminPortalDashboard from "./pages/AdminPortalDashboard/AdminPortalDashboard";
+import AdminPortalTours from "./pages/AdminPortalTours/AdminPortalTours";
 
 const Router = createBrowserRouter([
-  { path: "/", element: <HomePage />, errorElement: <ErrorPage /> },
-  { path: "/tours", element: <ToursPage />, errorElement: <ErrorPage /> },
-  { path: "/payment", element: <PaymentPage />, errorElement: <ErrorPage /> },
+  {
+    path: "/",
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/tours",
+    element: <ToursPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />,
+    errorElement: <ErrorPage />,
+  },
 
   {
     path: "/admin-portal/login",
